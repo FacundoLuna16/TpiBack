@@ -1,5 +1,6 @@
 package com.trabajoPractico.alquiler.domain.service;
 
+import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface AlquilerService {
 
     Alquiler terminarAlquiler(int alquilerId, Alquiler alquilerDetails);
 
+    Optional<Alquiler> createAlquiler(AlquilerRequestDto alquilerRequestDto);
 }

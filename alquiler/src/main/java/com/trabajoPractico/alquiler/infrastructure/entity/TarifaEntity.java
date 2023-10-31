@@ -1,5 +1,18 @@
 package com.trabajoPractico.alquiler.infrastructure.entity;
-
+/*
+CREATE TABLE TARIFAS (
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	TIPO_TARIFA INTEGER DEFAULT (1),
+	DEFINICION VARCHAR(1) DEFAULT ('S'),
+	DIA_SEMANA INTEGER,
+	DIA_MES INTEGER,
+	MES INTEGER,
+	ANIO INTEGER,
+	MONTO_FIJO_ALQUILER REAL,
+	MONTO_MINUTO_FRACCION REAL,
+	MONTO_KM REAL,
+	MONTO_HORA REAL)
+ */
 import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;

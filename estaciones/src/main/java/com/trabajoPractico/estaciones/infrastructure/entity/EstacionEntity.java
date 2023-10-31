@@ -1,5 +1,13 @@
 package com.trabajoPractico.estaciones.infrastructure.entity;
-
+/*
+CREATE TABLE ESTACIONES (
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	NOMBRE VARCHAR2(100),
+	FECHA_HORA_CREACION TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
+	LATITUD REAL,
+	LONGITUD REAL
+)
+ */
 import com.trabajoPractico.estaciones.domain.model.Estacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

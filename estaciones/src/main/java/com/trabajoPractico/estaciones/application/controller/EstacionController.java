@@ -6,6 +6,8 @@ import com.trabajoPractico.estaciones.application.response.EstacionResponseCerca
 import com.trabajoPractico.estaciones.domain.model.Estacion;
 import com.trabajoPractico.estaciones.domain.service.EstacionService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -64,16 +66,24 @@ public class EstacionController {
         }
     }
 
+
+
+
+
+
+
+
+
     @GetMapping("/cercania")
     public ResponseEntity<?> getEstacionByCercania(@RequestParam("latitud") double latitud, @RequestParam("longitud") double longitud) {
-        //Validar latitud y longitud
-        if (latitud  < -90 || latitud > 90|| longitud < -180 || longitud > 180) {
+        //validar que la latitud sea entre -90 y 90 y la longitud entre -180 y 180
+        if (latitud < -90 || latitud > 90 || longitud < -180 || longitud > 180) {
             return new ResponseEntity<>("La latitud o longitud no son válidas", HttpStatus.BAD_REQUEST);
         }
 
         try {
-            Optional<EstacionResponseCercania> estacionCercana = estacionService.getByCercania(latitud,longitud);
-            //Por las dudas si no hay estaciones en la base
+            Optional<EstacionResponseCercania> estacionCercana = estacionService.getByCercania(latitud, longitud);
+            // Por las dudas si no hay estaciones en la base
             if (estacionCercana.isEmpty()) {
                 return new ResponseEntity<>("No se encontró la estación", HttpStatus.NO_CONTENT);
             }
@@ -82,9 +92,9 @@ public class EstacionController {
 
         } catch (Exception e) {
             return new ResponseEntity<>("Error interno", HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
+
 
 
     @PostMapping

@@ -1,5 +1,6 @@
 package com.trabajoPractico.alquiler.domain.service;
 
+import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,18 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
     public Alquiler terminarAlquiler(int alquilerId, Alquiler alquilerDetails) {
 
         return null;
+    }
+
+    @Override
+    public Optional<Alquiler> createAlquiler(AlquilerRequestDto alquilerRequestDto) {
+        //Validar que el int de la estacion exista para no romper integridad referncial a nivel de bd
+
+
+
+
+
+
+
+        return Optional.empty();
     }
 }

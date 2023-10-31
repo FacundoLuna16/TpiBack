@@ -1,11 +1,12 @@
 package com.trabajoPractico.alquiler.application.controller;
 
+import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
 import com.trabajoPractico.alquiler.application.response.AlquilerResponse;
 import com.trabajoPractico.alquiler.domain.service.AlquilerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/alquiler")
@@ -22,5 +23,20 @@ public class AlquilerController {
                 .toList()
         );
     }
+
+    @PostMapping
+    public ResponseEntity<?> createAlquiler(@Valid @RequestBody AlquilerRequestDto alquilerRequestDto, BindingResult result){
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
+        }
+        try {
+            return ResponseEntity.ok(alquilerService.createAlquiler(alquilerRequestDto));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
 
 }
