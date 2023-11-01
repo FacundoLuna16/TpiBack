@@ -31,6 +31,8 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     @Override
     public Optional<Alquiler> getById(int alquilerId) {
         AlquilerEntity alquilerEntity = alquilerDao.getById(alquilerId);
+
+        //Mapeo de entity a Modelo de dominio
         Alquiler alquiler = new Alquiler(alquilerEntity);
 
         return Optional.of(alquiler);
