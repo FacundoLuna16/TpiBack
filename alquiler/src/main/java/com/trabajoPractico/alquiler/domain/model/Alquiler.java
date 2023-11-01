@@ -32,7 +32,17 @@ public class Alquiler {
         this.fechaHoraDevolucion = entity.getFechaHoraDevolucion();
         this.monto = entity.getMonto();
         this.idTarifa = entity.getIdTarifa();
-
     }
 
+    public Alquiler(String idCliente, int estacionRetiro) {
+        this.idCliente = idCliente;
+        this.estacionRetiro = estacionRetiro;
+        this.estado = 1;
+        this.fechaHoraRetiro = LocalDateTime.now();
+        this.estacionDevolucion = 0;
+        this.fechaHoraDevolucion = null;
+        this.monto = 0.0;
+        this.idTarifa = 0;
+
+    }
 }

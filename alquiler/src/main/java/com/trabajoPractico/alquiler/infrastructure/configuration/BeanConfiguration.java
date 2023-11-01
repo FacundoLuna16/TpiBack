@@ -1,5 +1,6 @@
 package com.trabajoPractico.alquiler.infrastructure.configuration;
 
+import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import com.trabajoPractico.alquiler.domain.repository.TarifaRepository;
 import com.trabajoPractico.alquiler.domain.service.AlquilerService;
@@ -8,6 +9,7 @@ import com.trabajoPractico.alquiler.domain.service.DomainTarifaServiceImpl;
 import com.trabajoPractico.alquiler.domain.service.TarifaService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class BeanConfiguration {
@@ -18,8 +20,14 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public AlquilerService alquilerService(AlquilerRepository alquilerRepository) {
-        return new DomainAlquilerServiceImpl(alquilerRepository);
+    public AlquilerService alquilerService(AlquilerRepository alquilerRepository, EstacionService estacionService) {
+        return new DomainAlquilerServiceImpl(alquilerRepository, estacionService);
+    }
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

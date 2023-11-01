@@ -16,5 +16,5 @@ public class AlquilerRequestDto {
 
     @NotNull(message = "La estacion no puede ser nula")
     @DecimalMin(value = "1", inclusive = true, message = "La longitud esta fuera de rango")
-    private int estacionRetiro;
+    private int idEstacionRetiro;
 }

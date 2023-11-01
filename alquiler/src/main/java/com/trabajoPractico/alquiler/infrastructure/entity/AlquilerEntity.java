@@ -49,10 +49,10 @@ public class AlquilerEntity {
     private int estado;
 
     @Column(name = "ESTACION_RETIRO")
-    private int estacionRetiro;
+    private Integer estacionRetiro;
 
     @Column(name = "ESTACION_DEVOLUCION")
-    private int estacionDevolucion;
+    private Integer estacionDevolucion;
 
     @Column(name = "FECHA_HORA_RETIRO")
     private LocalDateTime fechaHoraRetiro;
