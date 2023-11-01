@@ -16,11 +16,9 @@ public class Estacion {
 
     private int id;
 
-    @Embedded
     private NombreEstacion nombre;
     private LocalDateTime fechaHoraDeCreacion;
 
-    @Embedded
     private Coordenada coordenada;
 //    private Double latitud;
 //    private Double longitud;

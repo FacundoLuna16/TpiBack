@@ -8,7 +8,9 @@ CREATE TABLE ESTACIONES (
 	LONGITUD REAL
 )
  */
+import com.trabajoPractico.estaciones.domain.model.Coordenada;
 import com.trabajoPractico.estaciones.domain.model.Estacion;
+import com.trabajoPractico.estaciones.domain.model.NombreEstacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -59,14 +61,14 @@ public class EstacionEntity {
     public static EstacionEntity from(Estacion estacion) {
         return new EstacionEntity(
                 estacion.getId(),
-                estacion.getNombre(),
+                estacion.getNombre().getNombre(),
                 estacion.getFechaHoraDeCreacion(),
-                estacion.getLatitud(),
-                estacion.getLongitud()
+                estacion.getCoordenada().getLatitud(),
+                estacion.getCoordenada().getLongitud()
         );
     }
 
     public Estacion toEstacion() {
-        return new Estacion(this.id, this.nombre, this.fechaHoraDeCreacion, this.latitud, this.longitud);
+        return new Estacion(this.id, new NombreEstacion(this.nombre), this.fechaHoraDeCreacion, new Coordenada(this.latitud, this.longitud));
     }
 }
