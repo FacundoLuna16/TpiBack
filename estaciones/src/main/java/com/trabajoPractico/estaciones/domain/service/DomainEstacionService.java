@@ -1,7 +1,6 @@
 package com.trabajoPractico.estaciones.domain.service;
 
 import com.trabajoPractico.estaciones.application.request.CreadoEstacionRequest;
-import com.trabajoPractico.estaciones.application.response.EstacionResponseAll;
 import com.trabajoPractico.estaciones.application.response.EstacionResponseCercania;
 import com.trabajoPractico.estaciones.domain.model.Coordenada;
 import com.trabajoPractico.estaciones.domain.model.Estacion;
@@ -32,11 +31,6 @@ public class DomainEstacionService implements EstacionService{
         return estacionRepository.findById(id);
     }
 
-    /*
-    * Para calcular la distancia entre dos estaciones, se considerará simplemente la
-distancia euclídea entre ambos puntos y cada grado corresponderá a 110000 m. Se
-aclara que este cálculo no es correcto, pero es suficiente para los fines de este
-Trabajo Práctico.*/
     @Override
     public Optional<EstacionResponseCercania> getByCercania(double latitud, double longitud) {
 
@@ -61,7 +55,7 @@ Trabajo Práctico.*/
         //Creamos el objeto de respuesta
         EstacionResponseCercania estacionResponseCercania = new EstacionResponseCercania(
                 estacionCercana.getId(),
-                estacionCercana.getNombre().getNombre(),
+                estacionCercana.getNombre().getValue(),
                 (int)distanciaMinima, //para no tener decimales
                 estacionCercana.getCoordenada().getLatitud(),
                 estacionCercana.getCoordenada().getLongitud()

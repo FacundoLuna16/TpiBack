@@ -1,13 +1,12 @@
 package com.trabajoPractico.estaciones.application.controller;
 
 import com.trabajoPractico.estaciones.application.request.CreadoEstacionRequest;
+import com.trabajoPractico.estaciones.application.response.EstacionReponseUnique;
 import com.trabajoPractico.estaciones.application.response.EstacionResponseAll;
 import com.trabajoPractico.estaciones.application.response.EstacionResponseCercania;
 import com.trabajoPractico.estaciones.domain.model.Estacion;
 import com.trabajoPractico.estaciones.domain.service.EstacionService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -32,7 +31,7 @@ public class EstacionController {
         try {
             List<EstacionResponseAll> estacionesAll = estacionService.getAll()
                     .stream()
-                    .map(estacion -> new EstacionResponseAll(estacion.getId(),estacion.getNombre().getNombre()))
+                    .map(estacion -> new EstacionResponseAll(estacion.getId(),estacion.getNombre().getValue()))
                     .toList();
             if (estacionesAll.isEmpty()) {
                 return new ResponseEntity<>("No hay estaciones en la base", HttpStatus.NO_CONTENT);
@@ -50,9 +49,14 @@ public class EstacionController {
         }
 
         try {
-            EstacionResponseAll estacionBuscada = estacionService.findById(id)
-                    .map(estacion -> new EstacionResponseAll(estacion.getId(), estacion.getNombre().getNombre()))
-                    .orElse(new EstacionResponseAll(0, "No se encontró la estación"));
+            EstacionReponseUnique estacionBuscada = estacionService.findById(id)
+                    .map(estacion -> new EstacionReponseUnique(
+                            estacion.getId(),
+                            estacion.getNombre().getValue(),
+                            estacion.getCoordenada().getLatitud(),
+                            estacion.getCoordenada().getLongitud()
+                    ))
+                    .orElse(new EstacionReponseUnique(0, "dsd", 0, 0));
 
             //Validar si la estacion existe
             if (estacionBuscada.getId() == 0) {

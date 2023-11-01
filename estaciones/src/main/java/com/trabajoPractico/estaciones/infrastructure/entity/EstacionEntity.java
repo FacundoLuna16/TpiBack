@@ -15,7 +15,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 
 import java.time.LocalDateTime;
@@ -61,7 +60,7 @@ public class EstacionEntity {
     public static EstacionEntity from(Estacion estacion) {
         return new EstacionEntity(
                 estacion.getId(),
-                estacion.getNombre().getNombre(),
+                estacion.getNombre().getValue(),
                 estacion.getFechaHoraDeCreacion(),
                 estacion.getCoordenada().getLatitud(),
                 estacion.getCoordenada().getLongitud()

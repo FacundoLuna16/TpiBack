@@ -11,18 +11,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlquilerResponse {
-    private int id;
-    private int idCliente;
-    private int idEstacionRetiro;
-    private int idEstacionDevolucion;
+    private Integer id;
+    private String idCliente;
+    private Integer estado;
+    private Integer idEstacionRetiro;
+    private Integer idEstacionDevolucion;
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
-    private double monto;
-    private int idTarifa;
+    private Double monto;
+    private Integer idTarifa;
 
     public AlquilerResponse(Alquiler alquiler) {
         this.id = alquiler.getId();
-        this.idCliente = Integer.parseInt(alquiler.getIdCliente());
+        this.idCliente = alquiler.getIdCliente();
+        this.estado = alquiler.getEstado();
         this.idEstacionRetiro = alquiler.getEstacionRetiro();
         this.idEstacionDevolucion = alquiler.getEstacionDevolucion();
         this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();

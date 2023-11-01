@@ -63,10 +63,17 @@ public class AlquilerEntity {
     private Double monto;
 
     @Column(name = "ID_TARIFA")
-    private int idTarifa;
+    private Integer idTarifa;
 
     public AlquilerEntity (Alquiler alquiler){
-        
+        this.idCliente = alquiler.getIdCliente();
+        this.estado = alquiler.getEstado();
+        this.estacionRetiro = alquiler.getEstacionRetiro();
+        this.estacionDevolucion = alquiler.getEstacionDevolucion()==0?null:alquiler.getEstacionDevolucion();
+        this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();
+        this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
+        this.monto = alquiler.getMonto()==0.0?null:alquiler.getMonto();
+        this.idTarifa = alquiler.getIdTarifa()==0?null:alquiler.getIdTarifa();
     }
 
 

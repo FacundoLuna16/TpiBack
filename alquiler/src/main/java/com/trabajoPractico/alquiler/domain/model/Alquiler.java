@@ -27,11 +27,11 @@ public class Alquiler {
         this.idCliente = entity.getIdCliente();
         this.estado = entity.getEstado();
         this.estacionRetiro = entity.getEstacionRetiro();
-        this.estacionDevolucion = entity.getEstacionDevolucion();
+        this.estacionDevolucion = entity.getEstacionDevolucion()==null?0:entity.getEstacionDevolucion();
         this.fechaHoraRetiro = entity.getFechaHoraRetiro();
         this.fechaHoraDevolucion = entity.getFechaHoraDevolucion();
         this.monto = entity.getMonto();
-        this.idTarifa = entity.getIdTarifa();
+        this.idTarifa = entity.getIdTarifa()==null?0:entity.getIdTarifa();
     }
 
     public Alquiler(String idCliente, int estacionRetiro) {
@@ -43,6 +43,6 @@ public class Alquiler {
         this.fechaHoraDevolucion = null;
         this.monto = 0.0;
         this.idTarifa = 0;
-
     }
+
 }

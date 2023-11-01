@@ -20,8 +20,6 @@ public class Estacion {
     private LocalDateTime fechaHoraDeCreacion;
 
     private Coordenada coordenada;
-//    private Double latitud;
-//    private Double longitud;
 
     public Estacion(CreadoEstacionRequest estacionRequest){
         this.nombre = new NombreEstacion(estacionRequest.getNombre());

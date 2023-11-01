@@ -20,7 +20,7 @@ public class EstacionServiceImpl implements EstacionService {
 
     @Override
     public Boolean validateIdEstacion(int id) {
-        val response = restTemplate.getForEntity("http://localhost:8080/estacion/{id}", EstacionResponse.class, id);
+        val response = restTemplate.getForEntity("http://localhost:8082/api/v1/estaciones/{id}", EstacionResponse.class, id);
 
         //validar que el status code sea 200 y que el body no sea null
         if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {

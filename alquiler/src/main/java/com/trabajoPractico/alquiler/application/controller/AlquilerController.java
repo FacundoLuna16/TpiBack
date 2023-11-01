@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/alquiler")
 public class AlquilerController {
@@ -17,11 +19,13 @@ public class AlquilerController {
 
     @GetMapping
     public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok(alquilerService.getAll()
-                .stream()
-                .map(AlquilerResponse::new)
-                .toList()
-        );
+        try {
+            List<AlquilerResponse> alquileres = alquilerService.getAll().stream().map(AlquilerResponse::new).toList();
+            return ResponseEntity.ok(alquileres);
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping

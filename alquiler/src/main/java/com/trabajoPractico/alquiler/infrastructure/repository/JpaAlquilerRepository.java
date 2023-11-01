@@ -4,9 +4,11 @@ import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import com.trabajoPractico.alquiler.infrastructure.dao.JpaAlquilerDao;
 import com.trabajoPractico.alquiler.infrastructure.entity.AlquilerEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +24,7 @@ public class JpaAlquilerRepository implements AlquilerRepository {
 
     @Override
     public List<Alquiler> findAll() {
-        return alquilerDao.findAll()
-                .stream()
-                .map(Alquiler::new)
-                .toList();
+        return alquilerDao.findAll().stream().map(Alquiler::new).toList();
     }
 
     @Override
@@ -39,8 +38,11 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     }
 
     @Override
+    @Transactional
     public Optional<Alquiler> save(Alquiler alquiler) {
         AlquilerEntity alquilerEntity = alquilerDao.save(new AlquilerEntity(alquiler));
+
+        //Transformar alquilerEntity a Alquiler para devolverlo
         Alquiler alquiler1 = new Alquiler(alquilerEntity);
         return Optional.of(alquiler1);
     }

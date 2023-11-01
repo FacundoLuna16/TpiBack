@@ -55,13 +55,9 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
 
         //Guarda el alquieler
-        //TODO completar metodo
+        Optional<Alquiler> alquilerGuardado = alquilerRepository.save(alquiler);
 
 
-
-
-
-
-        return Optional.empty();
+        return alquilerGuardado;
     }
 }
