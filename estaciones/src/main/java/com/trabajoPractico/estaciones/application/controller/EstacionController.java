@@ -32,7 +32,7 @@ public class EstacionController {
         try {
             List<EstacionResponseAll> estacionesAll = estacionService.getAll()
                     .stream()
-                    .map(estacion -> new EstacionResponseAll(estacion.getId(), estacion.getNombre()))
+                    .map(estacion -> new EstacionResponseAll(estacion.getId(),estacion.getNombre().getNombre()))
                     .toList();
             if (estacionesAll.isEmpty()) {
                 return new ResponseEntity<>("No hay estaciones en la base", HttpStatus.NO_CONTENT);

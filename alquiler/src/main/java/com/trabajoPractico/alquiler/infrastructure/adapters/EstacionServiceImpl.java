@@ -1,4 +1,4 @@
-package com.trabajoPractico.alquiler.infrastructure.adapter;
+package com.trabajoPractico.alquiler.infrastructure.adapters;
 
 import com.trabajoPractico.alquiler.domain.model.Estacion;
 import com.trabajoPractico.alquiler.domain.service.EstacionService;
