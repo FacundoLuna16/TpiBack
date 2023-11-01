@@ -24,10 +24,9 @@ public class Estacion {
 //    private Double longitud;
 
     public Estacion(CreadoEstacionRequest estacionRequest){
-        //this.nombre = estacionRequest.getNombre();
+        this.nombre = new NombreEstacion(estacionRequest.getNombre());
         this.fechaHoraDeCreacion = LocalDateTime.now();
-        //this.latitud = estacionRequest.getLatitud();
-        //this.longitud = estacionRequest.getLongitud();
+        this.coordenada = new Coordenada(estacionRequest.getLatitud(), estacionRequest.getLongitud());
     }
 
 
