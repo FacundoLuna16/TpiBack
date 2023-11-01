@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class AlquilerFinResquestDto {
-    @NotNull(message = "la Estacion NO puede ser nulo")
+    @NotNull(message = "la Estacion NO puede ser nulo")//TODO terminar validaciones
     private int estacionDevolucion;
     private String monedaElegida;
 }
