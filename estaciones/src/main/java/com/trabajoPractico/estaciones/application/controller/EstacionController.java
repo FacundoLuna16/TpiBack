@@ -51,7 +51,7 @@ public class EstacionController {
 
         try {
             EstacionResponseAll estacionBuscada = estacionService.findById(id)
-                    .map(estacion -> new EstacionResponseAll(estacion.getId(), estacion.getNombre()))
+                    .map(estacion -> new EstacionResponseAll(estacion.getId(), estacion.getNombre().getNombre()))
                     .orElse(new EstacionResponseAll(0, "No se encontró la estación"));
 
             //Validar si la estacion existe
@@ -65,13 +65,6 @@ public class EstacionController {
 
         }
     }
-
-
-
-
-
-
-
 
 
     @GetMapping("/cercania")

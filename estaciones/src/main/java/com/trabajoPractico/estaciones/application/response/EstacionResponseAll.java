@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class EstacionResponseAll {
     private int id;
     private String nombre;
-
 }

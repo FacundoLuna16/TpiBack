@@ -3,6 +3,7 @@ package com.trabajoPractico.estaciones.domain.service;
 import com.trabajoPractico.estaciones.application.request.CreadoEstacionRequest;
 import com.trabajoPractico.estaciones.application.response.EstacionResponseAll;
 import com.trabajoPractico.estaciones.application.response.EstacionResponseCercania;
+import com.trabajoPractico.estaciones.domain.model.Coordenada;
 import com.trabajoPractico.estaciones.domain.model.Estacion;
 import com.trabajoPractico.estaciones.domain.repository.EstacionRepository;
 
@@ -44,14 +45,12 @@ Trabajo Práctico.*/
         Estacion estacionCercana = null;
         double distancia = 0;
         double distanciaMinima = 0;
+        Coordenada cord = new Coordenada(latitud,longitud);
 
         //Por cada estacion calculamos la distancia
         for (Estacion estacion: estaciones){
-            double diferenciaLatitud = Math.abs(latitud - estacion.getCoordenada().getLatitud()) * 110000;
-            double diferenciaLongitud = Math.abs(longitud - estacion.getCoordenada().getLongitud()) * 110000;
-
             //Calculamos la distancia euclidea
-            distancia = Math.sqrt(Math.pow(diferenciaLatitud,2) + Math.pow(diferenciaLongitud,2));
+            distancia = estacion.getCoordenada().calcularDistacia(cord);
 
             //Si es la primera estacion o la distancia es menor a la minima, la guardamos
             if (distanciaMinima == 0 || distancia < distanciaMinima){
