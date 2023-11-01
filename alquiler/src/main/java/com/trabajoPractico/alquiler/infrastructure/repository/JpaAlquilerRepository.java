@@ -32,7 +32,7 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     public Optional<Alquiler> getById(int alquilerId) {
         AlquilerEntity alquilerEntity = alquilerDao.getById(alquilerId);
 
-        //Mapeo de entity a Modelo de dominio
+        //TODO Mapeo de entity a Modelo de dominio RESOLVER
         Alquiler alquiler = new Alquiler(alquilerEntity);
 
         return Optional.of(alquiler);

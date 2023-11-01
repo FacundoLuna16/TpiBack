@@ -19,7 +19,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//@Transient ignora para guardar en la base de datos
 @Entity
 @Data
 @Table(name = "TARIFAS")
