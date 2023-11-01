@@ -47,8 +47,8 @@ Trabajo Práctico.*/
 
         //Por cada estacion calculamos la distancia
         for (Estacion estacion: estaciones){
-            double diferenciaLatitud = Math.abs(latitud - estacion.getLatitud()) * 110000;
-            double diferenciaLongitud = Math.abs(longitud - estacion.getLongitud()) * 110000;
+            double diferenciaLatitud = Math.abs(latitud - estacion.getCoordenada().getLatitud()) * 110000;
+            double diferenciaLongitud = Math.abs(longitud - estacion.getCoordenada().getLongitud()) * 110000;
 
             //Calculamos la distancia euclidea
             distancia = Math.sqrt(Math.pow(diferenciaLatitud,2) + Math.pow(diferenciaLongitud,2));
@@ -62,10 +62,10 @@ Trabajo Práctico.*/
         //Creamos el objeto de respuesta
         EstacionResponseCercania estacionResponseCercania = new EstacionResponseCercania(
                 estacionCercana.getId(),
-                estacionCercana.getNombre(),
+                estacionCercana.getNombre().getNombre(),
                 (int)distanciaMinima, //para no tener decimales
-                estacionCercana.getLatitud(),
-                estacionCercana.getLongitud()
+                estacionCercana.getCoordenada().getLatitud(),
+                estacionCercana.getCoordenada().getLongitud()
         );
 
         return Optional.of(estacionResponseCercania);

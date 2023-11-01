@@ -1,4 +1,4 @@
-package com.trabajoPractico.alquiler.domain.service;
+package com.trabajoPractico.alquiler.domain.exchangePort;
 
 import com.trabajoPractico.alquiler.domain.model.Estacion;
 

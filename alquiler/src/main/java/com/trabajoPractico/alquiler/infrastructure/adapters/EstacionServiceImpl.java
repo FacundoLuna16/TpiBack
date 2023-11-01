@@ -1,7 +1,7 @@
 package com.trabajoPractico.alquiler.infrastructure.adapters;
 
 import com.trabajoPractico.alquiler.domain.model.Estacion;
-import com.trabajoPractico.alquiler.domain.service.EstacionService;
+import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 
 import java.util.Optional;
 
