@@ -19,7 +19,7 @@ public class AlquilerResponse {
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
     private Double monto;
-    private Integer idTarifa;
+    private Long idTarifa;
 
     public AlquilerResponse(Alquiler alquiler) {
         this.id = alquiler.getId();

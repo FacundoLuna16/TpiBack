@@ -4,9 +4,13 @@ import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResq
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
 import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
+import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,11 +39,6 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         return alquilerRepository.getById(alquilerId);
     }
 
-    @Override
-    public Alquiler iniciarAlquiler(Alquiler alquiler) {
-
-        return null;
-    }
 
     @Override
     public Alquiler terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
@@ -108,7 +107,7 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         alquilerAFinalizar.get().setIdTarifa((int)tarifa.getId());
 
 
-        return null;
+        return alquilerAFinalizar.get();
     }
 
     @Override
@@ -125,4 +124,6 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         //Guarda el alquieler en la base de datos
         return alquilerRepository.save(alquiler);
     }
+
+
 }

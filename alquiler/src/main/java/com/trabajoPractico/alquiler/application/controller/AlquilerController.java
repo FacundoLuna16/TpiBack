@@ -52,7 +52,7 @@ public class AlquilerController {
             //TODO implementar
             return ResponseEntity.ok(alquilerService.terminarAlquiler(id,alquilerFinResquestDto));
         }
-        catch (Exception e){
+        catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
