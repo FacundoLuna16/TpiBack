@@ -45,7 +45,6 @@ public class DomainEstacionService implements EstacionService{
         for (Estacion estacion: estaciones){
             //Calculamos la distancia euclidea
             distancia = estacion.getCoordenada().calcularDistacia(cord);
-
             //Si es la primera estacion o la distancia es menor a la minima, la guardamos
             if (distanciaMinima == 0 || distancia < distanciaMinima){
                 distanciaMinima = distancia;
@@ -78,6 +77,20 @@ public class DomainEstacionService implements EstacionService{
     @Override
     public void deleteById(int id) {
         estacionRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Double> getDistanciaEntreEstaciones(int idEstacion1, int idEstacion2) {
+        //Busca las estaciones por id
+        Estacion estacion1 = estacionRepository.findById(idEstacion1).get();
+        Estacion estacion2 = estacionRepository.findById(idEstacion2).get();
+
+        //Calcula la distancia entre las estaciones
+        Double distanciaMts = estacion1.getCoordenada().calcularDistacia(estacion2.getCoordenada());
+
+        //Pasa la distancia a km con 2 decimales
+        Double distanciaKm = (double) Math.round(distanciaMts/1000 * 100) / 100;
+        return Optional.of(distanciaKm);
     }
 
 }

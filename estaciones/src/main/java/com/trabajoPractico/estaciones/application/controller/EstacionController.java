@@ -92,6 +92,23 @@ public class EstacionController {
         }
     }
 
+    @GetMapping("/distanciaEntreEstaciones")
+    public ResponseEntity<?> getDistanciaEntreEstaciones(@RequestParam("idEstacion1") int idEstacion1, @RequestParam("idEstacion2") int idEstacion2) {
+
+        try {
+            Optional<Double> distanciaEntreEstaciones = estacionService.getDistanciaEntreEstaciones(idEstacion1, idEstacion2);
+            // Por las dudas si no hay estaciones en la base
+            if (distanciaEntreEstaciones.isEmpty()) {
+                return new ResponseEntity<>("No se encontró la estación", HttpStatus.NO_CONTENT);
+            }
+
+            return ResponseEntity.ok(distanciaEntreEstaciones.get());
+
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error interno", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 
     @PostMapping

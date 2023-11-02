@@ -22,4 +22,5 @@ public interface EstacionService {
     void deleteById(int id);
 
 
+    Optional<Double> getDistanciaEntreEstaciones(int idEstacion1, int idEstacion2);
 }
