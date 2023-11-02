@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +22,17 @@ public class Tarifa {
     private Double montoMinutoFraccion;
     private Double montoKm;
     private Double montoHora;
+
+
+    public LocalDate getFecha() {
+        int anio = this.getAnio();
+        int mes = this.getMes();
+        int diaMes = this.getDiaMes();
+
+        // Utiliza el método estático 'of' para crear un objeto LocalDate.
+        return LocalDate.of(anio, mes, diaMes);
+    }
+
 
 
 }

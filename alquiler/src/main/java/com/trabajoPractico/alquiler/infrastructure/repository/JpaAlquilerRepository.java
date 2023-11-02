@@ -49,6 +49,8 @@ public class JpaAlquilerRepository implements AlquilerRepository {
 
     @Override
     public Optional<Alquiler> update(Alquiler alquiler) {
-        return Optional.empty();
+        AlquilerEntity alquilerEntity = alquilerDao.save(new AlquilerEntity(alquiler));
+        Alquiler alquiler1 = new Alquiler(alquilerEntity);
+        return Optional.of(alquiler1);
     }
 }

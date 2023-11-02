@@ -63,7 +63,7 @@ public class AlquilerEntity {
     private Double monto;
 
     @Column(name = "ID_TARIFA")
-    private Integer idTarifa;
+    private Long idTarifa;
 
     public AlquilerEntity (Alquiler alquiler){
         this.idCliente = alquiler.getIdCliente();

@@ -29,4 +29,17 @@ public class EstacionServiceImpl implements EstacionService {
         }
         return false;
     }
+
+    @Override
+    public Double getDistanciaEntreEstaciones(int idEstacionOrigen, int idEstacionDestino) {
+        //http://localhost:8081/api/v1/estaciones/distanciaEntreEstaciones?idEstacion1={idEstacionOrigen}&idEstacion2={idEstacionDestino}
+        val response = restTemplate.getForEntity("http://localhost:8082/api/v1/estaciones" +
+                        "/distanciaEntreEstaciones?idEstacion1={idEstacionOrigen}&idEstacion2={idEstacionDestino}"
+                , Double.class, idEstacionOrigen,idEstacionDestino);
+
+        if (response.getStatusCode().is2xxSuccessful()  && response.getBody() != null){
+            return response.getBody();
+        }
+        return null;
+    }
 }

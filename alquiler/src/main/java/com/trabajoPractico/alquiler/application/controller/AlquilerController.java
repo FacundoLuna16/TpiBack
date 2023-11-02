@@ -50,12 +50,13 @@ public class AlquilerController {
         }
         try {
             //TODO implementar
-            return ResponseEntity.ok("A implementar");//alquilerService.updateAlquiler(id, alquilerRequestDto));
+            return ResponseEntity.ok(alquilerService.terminarAlquiler(id,alquilerFinResquestDto));
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
 
 }

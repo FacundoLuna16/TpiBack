@@ -20,7 +20,7 @@ public class Alquiler {
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
     private Double monto;
-    private int idTarifa;
+    private long idTarifa;
 
     public Alquiler(AlquilerEntity entity){
         this.id = entity.getId();

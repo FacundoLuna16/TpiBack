@@ -20,8 +20,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public AlquilerService alquilerService(AlquilerRepository alquilerRepository, EstacionService estacionService) {
-        return new DomainAlquilerServiceImpl(alquilerRepository, estacionService);
+    public AlquilerService alquilerService(AlquilerRepository alquilerRepository, EstacionService estacionService, TarifaService tarifaService) {
+        return new DomainAlquilerServiceImpl(alquilerRepository, estacionService, tarifaService);
     }
 
 
