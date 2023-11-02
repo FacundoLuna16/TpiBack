@@ -1,5 +1,6 @@
 package com.trabajoPractico.alquiler.application.controller;
 
+import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
 import com.trabajoPractico.alquiler.application.response.AlquilerResponse;
 import com.trabajoPractico.alquiler.domain.service.AlquilerService;
@@ -40,6 +41,20 @@ public class AlquilerController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateAlquiler(@PathVariable("id") int id, @Valid @RequestBody AlquilerFinResquestDto alquilerFinResquestDto, BindingResult result){
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
+        }
+        try {
+            //TODO implementar
+            return ResponseEntity.ok("A implementar");//alquilerService.updateAlquiler(id, alquilerRequestDto));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 
