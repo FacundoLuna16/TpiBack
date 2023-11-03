@@ -57,6 +57,16 @@ public class AlquilerController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getAlquiler(@PathVariable("id") int id){
+        try {
+            return ResponseEntity.ok(alquilerService.getAlquiler(id));
+        }
+        catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
 
 }

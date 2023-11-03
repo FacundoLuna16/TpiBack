@@ -45,8 +45,8 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         //Buscar que exista el alquiler solicitado a finalizar
         Optional<Alquiler> alquilerAFinalizar  = alquilerRepository.getById(alquilerId);
 
-        if (alquilerAFinalizar.isEmpty()){
-            throw new RuntimeException("El alquiler no existe");
+        if (alquilerAFinalizar.isEmpty() || alquilerAFinalizar.get().getEstado() == 2){
+            throw new RuntimeException("El alquiler no existe o ya finalizo");
         }
 
         //calcular costo del alquiler segun el dia y hora que se devuelve la bicicleta
@@ -99,6 +99,17 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         //calcular el monto total
         Double montoTotal = montoFijo + montoAdicionalPorTiempo + montoAdicionalDistancia;
 
+
+        //Transformacion de moneda
+
+
+
+
+
+
+
+
+
         //Cuando termine de calcular las cosas (xD) creo el alquiler con los datos nuevos
         alquilerAFinalizar.get().setMonto(montoTotal);
         alquilerAFinalizar.get().setFechaHoraDevolucion(fechaHoraDevolucion);
@@ -106,8 +117,9 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         alquilerAFinalizar.get().setEstacionDevolucion(alquilerDetails.getEstacionDevolucion());
         alquilerAFinalizar.get().setIdTarifa((int)tarifa.getId());
 
+        alquilerRepository.save(alquilerAFinalizar.get());
 
-        return alquilerAFinalizar.get();
+        return alquilerRepository.update(alquilerAFinalizar.get()).get();
     }
 
     @Override

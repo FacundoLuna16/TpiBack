@@ -29,10 +29,10 @@ public class JpaAlquilerRepository implements AlquilerRepository {
 
     @Override
     public Optional<Alquiler> getById(int alquilerId) {
-        AlquilerEntity alquilerEntity = alquilerDao.getById(alquilerId);
+        Optional<AlquilerEntity> alquilerEntity = alquilerDao.findById(alquilerId);
 
         //TODO Mapeo de entity a Modelo de dominio RESOLVER
-        Alquiler alquiler = new Alquiler(alquilerEntity);
+        Alquiler alquiler = new Alquiler(alquilerEntity.get());
 
         return Optional.of(alquiler);
     }
@@ -48,8 +48,12 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     }
 
     @Override
-    public Optional<Alquiler> update(Alquiler alquiler) {
-        AlquilerEntity alquilerEntity = alquilerDao.save(new AlquilerEntity(alquiler));
+    public Optional<Alquiler> update(Alquiler alquilerNuevosDatos) {
+        //busco en la base de datos el alquiler que quiero actualizar
+        AlquilerEntity alquilerEntity = alquilerDao.findById(alquilerNuevosDatos.getId()).get();
+
+        alquilerDao.save(alquilerEntity.from(alquilerNuevosDatos));
+
         Alquiler alquiler1 = new Alquiler(alquilerEntity);
         return Optional.of(alquiler1);
     }
