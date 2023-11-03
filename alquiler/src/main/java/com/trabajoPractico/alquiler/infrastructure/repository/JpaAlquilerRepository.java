@@ -57,4 +57,6 @@ public class JpaAlquilerRepository implements AlquilerRepository {
         Alquiler alquiler1 = new Alquiler(alquilerEntity);
         return Optional.of(alquiler1);
     }
+
+
 }

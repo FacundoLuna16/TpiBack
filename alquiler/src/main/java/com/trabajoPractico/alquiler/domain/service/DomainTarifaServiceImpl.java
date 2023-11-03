@@ -4,6 +4,7 @@ import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import com.trabajoPractico.alquiler.domain.repository.TarifaRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DomainTarifaServiceImpl implements TarifaService{
@@ -20,7 +21,10 @@ public class DomainTarifaServiceImpl implements TarifaService{
     }
 
     @Override
-    public Tarifa buscarTarifa(LocalDate fecha){
+    public Tarifa buscarTarifa(LocalDateTime fechaHoraDevolucion){
+        LocalDate fecha = fechaHoraDevolucion.toLocalDate();
+
+        //TODO refactorizar
         List<Tarifa> tarifas = tarifaRepository.getAll();
         List<Tarifa> tarifasPromocion = tarifas.stream().filter(tarifa -> tarifa.getTipoTarifa() == 2).toList();
 

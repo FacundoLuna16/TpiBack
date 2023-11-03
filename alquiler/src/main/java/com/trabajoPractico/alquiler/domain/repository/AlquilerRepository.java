@@ -16,5 +16,4 @@ public interface AlquilerRepository {
 
     Optional<Alquiler> update(Alquiler alquiler);
 
-
 }
