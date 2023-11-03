@@ -2,6 +2,7 @@ package com.trabajoPractico.alquiler.domain.service;
 
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
+import com.trabajoPractico.alquiler.application.request.Alquiler.FiltrosAlquilerRequestDto;
 import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.model.Tarifa;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -137,5 +139,16 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         return alquilerRepository.save(alquiler);
     }
 
+    @Override
+    public List<Alquiler> filtrarPorEstado(int estado) {
+        List<Alquiler> alquileres = alquilerRepository.findAll();
+        List<Alquiler> alquileresFiltrados = new ArrayList<>();
 
+        for (Alquiler alquiler: alquileres) {
+            if (alquiler.getEstado() == estado){
+                alquileresFiltrados.add(alquiler);
+            }
+        }
+        return alquileresFiltrados;
+    }
 }

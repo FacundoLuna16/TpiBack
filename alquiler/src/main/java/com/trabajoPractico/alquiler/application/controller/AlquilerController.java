@@ -2,6 +2,7 @@ package com.trabajoPractico.alquiler.application.controller;
 
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
+import com.trabajoPractico.alquiler.application.request.Alquiler.FiltrosAlquilerRequestDto;
 import com.trabajoPractico.alquiler.application.response.AlquilerResponse;
 import com.trabajoPractico.alquiler.domain.service.AlquilerService;
 import jakarta.validation.Valid;
@@ -67,6 +68,13 @@ public class AlquilerController {
         }
     }
 
-
-
+    @GetMapping("/filtrar/estado/{estado}")
+    public ResponseEntity<?> filtrarAlquileres(@RequestParam int estado){
+        try {
+            return ResponseEntity.ok(alquilerService.filtrarPorEstado(estado));
+        }
+        catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
