@@ -45,4 +45,12 @@ public class Alquiler {
         this.idTarifa = 0;
     }
 
+    public Alquiler finalizarAlquiler(Double montoTotal, int estacionDevolucion, LocalDateTime fechaHoraDevolucion, long idTarifa) {
+        this.estado = 2;
+        this.monto = montoTotal;
+        this.estacionDevolucion = estacionDevolucion;
+        this.fechaHoraDevolucion = fechaHoraDevolucion;
+        this.idTarifa = idTarifa;
+        return this;
+    }
 }

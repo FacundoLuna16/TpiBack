@@ -30,8 +30,17 @@ public class Tarifa {
         return LocalDate.of(anio, mes, diaMes);
     }
 
-    public Double calcularMontoTotal(Double montoAdicionalPorTiempo, Double montoAdicionalDistancia){
-        return this.montoFijoAlquiler + montoAdicionalPorTiempo + montoAdicionalDistancia;
+    public Double calcularMontoTotal(LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraDevolucion, Double distancia){
+        Double montoFijoAlquiler = this.montoFijoAlquiler;
+        Double montoAdicionalPorTiempo = this.calcularMontoAdiccionalPorTiempo(fechaHoraInicio,fechaHoraDevolucion);
+        Double montoAdicionalPorDistancia = this.calcularMontoAdiccionalPorDistancia(distancia);
+
+        return montoFijoAlquiler + montoAdicionalPorTiempo + montoAdicionalPorDistancia;
+
+    }
+
+    private Double calcularMontoAdiccionalPorDistancia(Double distancia) {
+        return distancia * this.montoKm;
     }
 
     public Double calcularMontoAdiccionalPorTiempo(LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraDevolucion){
@@ -39,7 +48,6 @@ public class Tarifa {
         long minutosAlquilados = Duration.between(fechaHoraInicio,fechaHoraDevolucion).toMinutes();
 
         double montoMinutosFraccionados = 0.0;
-        Double montoAdicionalHoras = 0.0;
         Double montoAdicionalPorTiempo = 0.0;
 
         if (minutosAlquilados < 31){

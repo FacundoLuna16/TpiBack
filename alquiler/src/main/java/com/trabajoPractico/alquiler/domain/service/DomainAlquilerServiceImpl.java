@@ -48,26 +48,19 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
         Optional<Alquiler> alquilerAFinalizar = this.buscarAlquiler(alquilerId);
 
-        //calcular costo del alquiler segun el dia y hora que se devuelve la bicicleta
+        //Buscamos la tarifa que corresponde a la fechaHoraDevolucion
         LocalDateTime fechaHoraDevolucion = LocalDateTime.now();
         Tarifa tarifa = tarifaService.buscarTarifa(fechaHoraDevolucion);
-
-        //Argumentos necesarios para calcular el monto
-        Double montoFijo = tarifa.getMontoFijoAlquiler();
-        //calcular cuantas horas pasaron entre la fechaHoraInicio y la fechaHoraDevolucion
-        LocalDateTime fechaHoraInicio = alquilerAFinalizar.get().getFechaHoraRetiro();
-
-        Double montoAdicionalPorTiempo = tarifa.calcularMontoAdiccionalPorTiempo(fechaHoraInicio,fechaHoraDevolucion);
 
         //calcular la distancia entre estaciones
         Double distancia = estacionService.getDistanciaEntreEstaciones(alquilerAFinalizar.get().getEstacionRetiro(),alquilerDetails.getEstacionDevolucion());
         if(distancia == null) throw new RuntimeException("no se encontro una estacion");
 
-        Double montoAdicionalDistancia = tarifa.getMontoKm() * distancia;
 
         //calcular el monto total
+        LocalDateTime fechaHoraRetiro = alquilerAFinalizar.get().getFechaHoraRetiro();
+        Double montoTotal = tarifa.calcularMontoTotal(fechaHoraRetiro,fechaHoraDevolucion,distancia);
 
-        Double montoTotal = tarifa.calcularMontoTotal(montoAdicionalPorTiempo,montoAdicionalDistancia);
 
         //Transformacion de moneda
 
@@ -80,14 +73,7 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
 
         //Cuando termine de calcular las cosas (xD) creo el alquiler con los datos nuevos
-        alquilerAFinalizar.get().setMonto(montoTotal);
-        alquilerAFinalizar.get().setFechaHoraDevolucion(fechaHoraDevolucion);
-        alquilerAFinalizar.get().setEstado(2);
-        alquilerAFinalizar.get().setEstacionDevolucion(alquilerDetails.getEstacionDevolucion());
-        alquilerAFinalizar.get().setIdTarifa((int)tarifa.getId());
-
-        alquilerRepository.save(alquilerAFinalizar.get());
-
+        alquilerAFinalizar.get().finalizarAlquiler(montoTotal,alquilerDetails.getEstacionDevolucion(),fechaHoraDevolucion,tarifa.getId());
         return alquilerRepository.update(alquilerAFinalizar.get()).get();
     }
 
@@ -116,7 +102,6 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
     @Override
     public List<Alquiler> filtrarPorEstado(int estado) {
-
         return alquilerRepository.findAll().stream()
                 .filter(alquiler -> alquiler.getEstado() == estado)
                 .collect(Collectors.toList());

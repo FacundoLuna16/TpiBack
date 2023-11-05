@@ -15,4 +15,6 @@ public class AlquilerFinResquestDto {
 
     @NotBlank(message = "debe elegir una moneda valida o null para pesos")
     private String monedaElegida;
+
+
 }
