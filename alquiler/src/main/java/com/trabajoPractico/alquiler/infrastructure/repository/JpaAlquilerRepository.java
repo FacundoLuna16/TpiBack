@@ -31,7 +31,6 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     public Optional<Alquiler> getById(int alquilerId) {
         Optional<AlquilerEntity> alquilerEntity = alquilerDao.findById(alquilerId);
 
-        //TODO Mapeo de entity a Modelo de dominio RESOLVER
         Alquiler alquiler = new Alquiler(alquilerEntity.get());
 
         return Optional.of(alquiler);

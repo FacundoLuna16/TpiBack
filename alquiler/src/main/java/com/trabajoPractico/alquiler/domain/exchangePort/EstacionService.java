@@ -6,8 +6,6 @@ import java.util.Optional;
 
 
 public interface EstacionService {
-    //TODO completar interfaz
-    // define las peticiones que necesites hacerle al micro servicio estacion para que te devuelva estaciones.
     Boolean validateIdEstacion(int id);
 
     Double getDistanciaEntreEstaciones(int idEstacionOrigen, int idEstacionDestino);

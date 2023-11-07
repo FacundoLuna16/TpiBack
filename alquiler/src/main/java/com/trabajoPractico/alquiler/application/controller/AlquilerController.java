@@ -50,7 +50,6 @@ public class AlquilerController {
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
-            //TODO implementar
             return ResponseEntity.ok(alquilerService.terminarAlquiler(id,alquilerFinResquestDto));
         }
         catch (RuntimeException e){
