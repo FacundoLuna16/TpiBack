@@ -2,17 +2,13 @@ package com.trabajoPractico.alquiler.domain.service;
 
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
-import com.trabajoPractico.alquiler.application.request.Alquiler.FiltrosAlquilerRequestDto;
 import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,37 +40,23 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
 
     @Override
-    public Alquiler terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
+    public Optional<Alquiler> terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
 
         Optional<Alquiler> alquilerAFinalizar = this.buscarAlquiler(alquilerId);
 
         //Buscamos la tarifa que corresponde a la fechaHoraDevolucion
         LocalDateTime fechaHoraDevolucion = LocalDateTime.now();
         Tarifa tarifa = tarifaService.buscarTarifa(fechaHoraDevolucion);
+//        alquilerAFinalizar.get().setFechaHoraDevolucion(fechaHoraDevolucion);
+//        alquilerAFinalizar.get().setTarifa(tarifa);
 
         //calcular la distancia entre estaciones
         Double distancia = estacionService.getDistanciaEntreEstaciones(alquilerAFinalizar.get().getEstacionRetiro(),alquilerDetails.getEstacionDevolucion());
         if(distancia == null) throw new RuntimeException("no se encontro una estacion");
 
-
-        //calcular el monto total
-        LocalDateTime fechaHoraRetiro = alquilerAFinalizar.get().getFechaHoraRetiro();
-        Double montoTotal = tarifa.calcularMontoTotal(fechaHoraRetiro,fechaHoraDevolucion,distancia);
-
-
-        //Transformacion de moneda
-
-
-
-
-
-
-
-
-
-        //Cuando termine de calcular las cosas (xD) creo el alquiler con los datos nuevos
-        alquilerAFinalizar.get().finalizarAlquiler(montoTotal,alquilerDetails.getEstacionDevolucion(),fechaHoraDevolucion,tarifa.getId());
-        return alquilerRepository.update(alquilerAFinalizar.get()).get();
+        alquilerAFinalizar.get().finalizarAlquiler(distancia,alquilerDetails.getEstacionDevolucion(),fechaHoraDevolucion,tarifa);
+        //Cuando termine de calcular las cosas creo el alquiler con los datos nuevos
+        return alquilerRepository.update(alquilerAFinalizar.get());
     }
 
     private Optional<Alquiler> buscarAlquiler(int alquilerId) {
