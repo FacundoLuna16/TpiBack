@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "a512bb1e-96e1-43ff-9ddb-e09df9956839",
+		"name": "tpiBackend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30221653"
+	},
+	"item": [
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "alquileres",
+					"item": [
+						{
+							"name": "PostAlquiler",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idCliente\": \"idCliente\",\r\n  \"idEstacionRetiro\": 2\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/alquileres",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"alquileres"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllAlquileres",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/alquileres",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"alquileres"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByIdAlquileres",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MjA5MDEsImlhdCI6MTY5OTcyMDYwMSwianRpIjoiOWZhYWQ3MTUtNTdhOS00NjQ5LTk5MWMtY2NjNjJiYjFkNWFjIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiJhMjhmOWE0NC04MzllLTQxMWEtODZhMy05NDllNTk3ZmQwYzgiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiJhMjhmOWE0NC04MzllLTQxMWEtODZhMy05NDllNTk3ZmQwYzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.Q9m-pcz7jljaKTNp_sfEMPEjTEJsVzEKZoI823X-0mMo4xdKJbwPnybJidTVkazi9q9z6b3Shh4pWxiA2VlL3mCyv25qsb-GD2JefNaZLOQEGY4bOsFUZ731jBLEcQkH5MB-y6_jgm9aKNBk4eRoRskabdNoo1Xh9l3LYlCPKxUD1k6rBGr7yUOYXYikFKW_8f_9kOwaY94omfsgpXh027w8hHSsLRi7PAfvxPXgLcYQT_mJR21l8NofhqsjzLIG3EblLfMJ98pGAOMpKlX4ghny9TYBoMQbJyjwHL9LwtkoDuRVtrHJCB5enXz_tf6T40t6-nNQEdpLaSn7O5NpcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/alquileres/21",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"alquileres",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estacionDevolucion\": 1,\r\n  \"monedaElegida\": \"USD\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/alquileres/30",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"alquileres",
+										"30"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getAllEstaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/estaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"estaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByIdEstaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/estaciones/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"estaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cercaniaEstacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080api/v1/estaciones/cercania?latitud=-31.432961123175&longitud=-64.1840911211195",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080api",
+							"path": [
+								"v1",
+								"estaciones",
+								"cercania"
+							],
+							"query": [
+								{
+									"key": "latitud",
+									"value": "-31.432961123175"
+								},
+								{
+									"key": "longitud",
+									"value": "-64.1840911211195"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Estacion2\",\r\n    \"latitud\": -53.52135151,\r\n    \"longitud\": -52.515151\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/estaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"estaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "serviciosExternos",
+			"item": [
+				{
+					"name": "converciones",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moneda_destino\":\"CLP\",\r\n    \"importe\":4026.8\r\n}"
+						},
+						"url": {
+							"raw": "http://34.82.105.125:8080/convertir",
+							"protocol": "http",
+							"host": [
+								"34",
+								"82",
+								"105",
+								"125"
+							],
+							"port": "8080",
+							"path": [
+								"convertir"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tokenCliene",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "cliente-tpi",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ZmiMMce6zh4xKHde1FFKbfkiThDyYpyn",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "89422@sistemas.frc.utn.edu.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "89422-2023",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "tpi-scope",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/token",
+							"protocol": "https",
+							"host": [
+								"labsys",
+								"frc",
+								"utn",
+								"edu",
+								"ar"
+							],
+							"path": [
+								"aim",
+								"realms",
+								"backend-tps",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tockenAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "cliente-tpi",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ZmiMMce6zh4xKHde1FFKbfkiThDyYpyn",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "grutpi-7",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "grutpi-7-2023#",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "tpi-scope",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/token",
+							"protocol": "https",
+							"host": [
+								"labsys",
+								"frc",
+								"utn",
+								"edu",
+								"ar"
+							],
+							"path": [
+								"aim",
+								"realms",
+								"backend-tps",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
