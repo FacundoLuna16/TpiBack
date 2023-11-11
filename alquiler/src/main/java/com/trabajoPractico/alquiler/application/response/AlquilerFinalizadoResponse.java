@@ -29,6 +29,6 @@ public class AlquilerFinalizadoResponse {
         this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
         this.moneda = moneda == null ? "ARS" : moneda;
         this.monto = alquiler.getMonto();
-        this.idTarifa = alquiler.getIdTarifa();
+        this.idTarifa = alquiler.getTarifa() != null ? alquiler.getTarifa().getId() : null;
     }
 }

@@ -36,7 +36,9 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
     @Override
     public Optional<Alquiler> getAlquiler(int alquilerId) {
-        return alquilerRepository.getById(alquilerId);
+        Optional<Alquiler> alquiler = alquilerRepository.getById(alquilerId);
+
+        return alquiler;
     }
 
 
@@ -48,8 +50,6 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         //Buscamos la tarifa que corresponde a la fechaHoraDevolucion
         LocalDateTime fechaHoraDevolucion = LocalDateTime.now();
         Tarifa tarifa = tarifaService.buscarTarifa(fechaHoraDevolucion);
-//        alquilerAFinalizar.get().setFechaHoraDevolucion(fechaHoraDevolucion);
-//        alquilerAFinalizar.get().setTarifa(tarifa);
 
         //calcular la distancia entre estaciones
         Double distancia = estacionService.getDistanciaEntreEstaciones(alquilerAFinalizar.get().getEstacionRetiro(),alquilerDetails.getEstacionDevolucion());

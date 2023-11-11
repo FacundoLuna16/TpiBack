@@ -30,13 +30,14 @@ public class AplicationServiceImpl implements AplicationService{
 
     @Override
     public Optional<Alquiler> getAlquiler(int alquilerId) {
-        return alquilerService.getAlquiler(alquilerId);
+        Optional<Alquiler> alquiler = alquilerService.getAlquiler(alquilerId);
+        return alquiler;
     }
 
     @Override
     @Transactional
     public Optional<AlquilerFinalizadoResponse> terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
-
+        //TODO comprobar si el parametro de moneda elegida es null, que lo sea por defecto ARS
          AlquilerFinalizadoResponse alquilerResponse = alquilerService.terminarAlquiler(alquilerId, alquilerDetails)
                  .stream()
                  .map(alquiler -> new AlquilerFinalizadoResponse(alquiler, alquilerDetails.getMonedaElegida()))
@@ -44,6 +45,9 @@ public class AplicationServiceImpl implements AplicationService{
                  .orElseThrow(() -> new RuntimeException("No se pudo terminar el alquiler"));
 
          //hacemos la conversion de moneda
+        //Si la moneda elegida es ARS, no hacemos la conversion
+        if (alquilerDetails.getMonedaElegida().equals("ARS")) return Optional.of(alquilerResponse);
+
          Double importe = cambioMonedaService.obtenerConversion(alquilerResponse.getMonto(), alquilerDetails.getMonedaElegida());
          if (importe == null) {
              throw new RuntimeException("No se pudo obtener la conversion");

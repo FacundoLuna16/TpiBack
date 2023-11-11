@@ -1,11 +1,11 @@
 package com.trabajoPractico.alquiler.domain.model;
 
+import com.trabajoPractico.alquiler.infrastructure.entity.TarifaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,10 +16,10 @@ public class Tarifa {
     private long id;
     private long tipoTarifa;
     private String definicion;
-    private int diaSemana;
-    private int diaMes;
-    private int mes;
-    private int anio;
+    private Integer diaSemana;
+    private Integer diaMes;
+    private Integer mes;
+    private Integer anio;
     private Double montoFijoAlquiler;
     private Double montoMinutoFraccion;
     private Double montoKm;
@@ -27,6 +27,7 @@ public class Tarifa {
 
 
     public LocalDate getFecha() {
+        if (this.anio == null || this.mes == null || this.diaMes == null) return null;
         return LocalDate.of(anio, mes, diaMes);
     }
 
@@ -71,4 +72,19 @@ public class Tarifa {
         return montoAdicionalPorTiempo;
     }
 
+    public TarifaEntity toEntity() {
+        TarifaEntity entity = new TarifaEntity();
+        entity.setId(this.id);
+        entity.setTipoTarifa(this.tipoTarifa);
+        entity.setDefinicion(this.definicion);
+        entity.setDiaSemana(this.diaSemana);
+        entity.setDiaMes(this.diaMes);
+        entity.setMes(this.mes);
+        entity.setAnio(this.anio);
+        entity.setMontoFijoAlquiler(this.montoFijoAlquiler);
+        entity.setMontoMinutoFraccion(this.montoMinutoFraccion);
+        entity.setMontoKm(this.montoKm);
+        entity.setMontoHora(this.montoHora);
+        return entity;
+    }
 }

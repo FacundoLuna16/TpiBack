@@ -21,19 +21,19 @@ public class Alquiler {
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
     private Double monto;
-    private long idTarifa;
+    private Tarifa tarifa;
 
-    public Alquiler(AlquilerEntity entity){
-        this.id = entity.getId();
-        this.idCliente = entity.getIdCliente();
-        this.estado = entity.getEstado();
-        this.estacionRetiro = entity.getEstacionRetiro();
-        this.estacionDevolucion = entity.getEstacionDevolucion()==null?0:entity.getEstacionDevolucion();
-        this.fechaHoraRetiro = entity.getFechaHoraRetiro();
-        this.fechaHoraDevolucion = entity.getFechaHoraDevolucion();
-        this.monto = entity.getMonto();
-        this.idTarifa = entity.getIdTarifa()==null?0:entity.getIdTarifa();
-    }
+//    public Alquiler(AlquilerEntity entity){
+//        this.id = entity.getId();
+//        this.idCliente = entity.getIdCliente();
+//        this.estado = entity.getEstado();
+//        this.estacionRetiro = entity.getEstacionRetiro();
+//        this.estacionDevolucion = entity.getEstacionDevolucion()==null?0:entity.getEstacionDevolucion();
+//        this.fechaHoraRetiro = entity.getFechaHoraRetiro();
+//        this.fechaHoraDevolucion = entity.getFechaHoraDevolucion();
+//        this.monto = entity.getMonto();
+//        this.idTarifa = entity.getIdTarifa()==null?0:entity.getIdTarifa();
+//    }
 
     public Alquiler(String idCliente, int estacionRetiro) {
         this.idCliente = idCliente;
@@ -43,31 +43,44 @@ public class Alquiler {
         this.estacionDevolucion = 0;
         this.fechaHoraDevolucion = null;
         this.monto = 0.0;
-        this.idTarifa = 0;
+        this.tarifa = null;
     }
 
+    public AlquilerEntity toEntity() {
+        AlquilerEntity entity = new AlquilerEntity();
+        entity.setId(this.id);
+        entity.setIdCliente(this.idCliente);
+        entity.setEstado(this.estado);
+        entity.setEstacionRetiro(this.estacionRetiro);
+        entity.setEstacionDevolucion(this.estacionDevolucion == 0 ? null : this.estacionDevolucion);
+        entity.setFechaHoraRetiro(this.fechaHoraRetiro);
+        entity.setFechaHoraDevolucion(this.fechaHoraDevolucion);
+        entity.setMonto(this.monto);
+        entity.setTarifa(this.tarifa != null ? this.tarifa.toEntity() : null);
+        return entity;
+    }
     public Alquiler finalizarAlquiler(Double distancia, int estacionDevolucion, LocalDateTime fechaHoraDevolucion, Tarifa tarifa) {
         this.estado = 2;
         this.fechaHoraDevolucion = fechaHoraDevolucion;
-        this.idTarifa = tarifa.getId();
+        this.tarifa = tarifa;
         this.estacionDevolucion = estacionDevolucion;
-        this.monto = this.calcularMontoTotal(distancia,tarifa);
+        this.monto = this.calcularMontoTotal(distancia);
         return this;
     }
-    public Double calcularMontoTotal(Double distancia, Tarifa tarifa){
+    public Double calcularMontoTotal(Double distancia){
         Double montoFijoAlquiler = tarifa.getMontoFijoAlquiler();
-        Double montoAdicionalPorTiempo = this.calcularMontoAdiccionalPorTiempo(tarifa);
-        Double montoAdicionalPorDistancia = this.calcularMontoAdiccionalPorDistancia(distancia, tarifa);
+        Double montoAdicionalPorTiempo = this.calcularMontoAdiccionalPorTiempo();
+        Double montoAdicionalPorDistancia = this.calcularMontoAdiccionalPorDistancia(distancia);
 
         return montoFijoAlquiler + montoAdicionalPorTiempo + montoAdicionalPorDistancia;
 
     }
 
-    private Double calcularMontoAdiccionalPorDistancia(Double distancia, Tarifa tarifa) {
-        return distancia * tarifa.getMontoKm();
+    private Double calcularMontoAdiccionalPorDistancia(Double distancia) {
+        return distancia * this.tarifa.getMontoKm();
     }
 
-    public Double calcularMontoAdiccionalPorTiempo(Tarifa tarifa){
+    public Double calcularMontoAdiccionalPorTiempo(){
 
         long minutosAlquilados = Duration.between(this.fechaHoraRetiro,this.fechaHoraDevolucion).toMinutes();
 
@@ -75,7 +88,7 @@ public class Alquiler {
         Double montoAdicionalPorTiempo = 0.0;
 
         if (minutosAlquilados < 31){
-            montoMinutosFraccionados = minutosAlquilados * tarifa.getMontoMinutoFraccion();
+            montoMinutosFraccionados = minutosAlquilados * this.tarifa.getMontoMinutoFraccion();
             montoAdicionalPorTiempo = montoMinutosFraccionados;
         } else {
 
@@ -86,10 +99,10 @@ public class Alquiler {
             if (minutosRestantes >= 31) {
                 horasAlquiladas++;
             } else {
-                montoMinutosFraccionados = minutosRestantes * tarifa.getMontoMinutoFraccion();
+                montoMinutosFraccionados = minutosRestantes *  this.tarifa.getMontoMinutoFraccion();
             }
 
-            montoAdicionalPorTiempo = horasAlquiladas * tarifa.getMontoHora() + montoMinutosFraccionados;
+            montoAdicionalPorTiempo = horasAlquiladas * this.tarifa.getMontoHora() + montoMinutosFraccionados;
         }
 
         return montoAdicionalPorTiempo;

@@ -1,6 +1,7 @@
 package com.trabajoPractico.alquiler.application.response;
 
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
+import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,6 @@ public class AlquilerResponse {
         this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();
         this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
         this.monto = alquiler.getMonto();
-        this.idTarifa = alquiler.getIdTarifa();
+        this.idTarifa = alquiler.getTarifa() != null ? alquiler.getTarifa().getId() : null;
     }
 }

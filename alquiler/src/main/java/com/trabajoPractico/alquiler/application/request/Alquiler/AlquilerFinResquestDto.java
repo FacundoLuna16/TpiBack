@@ -16,8 +16,8 @@ public class AlquilerFinResquestDto {
 
     @NotBlank(message = "debe elegir una moneda valida o null para pesos")
     @Pattern(
-            regexp = "^(EUR|CLP|BRL|COP|PEN|GBP|USD)$",
-            message = "La moneda elegida no es válida")
+            regexp = "^(EUR|CLP|BRL|COP|PEN|GBP|USD|ARS)$",
+            message = "Debe elegir una Moneda valida")
     private String monedaElegida;
 
 

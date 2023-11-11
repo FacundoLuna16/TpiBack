@@ -62,7 +62,9 @@ public class AlquilerController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getAlquiler(@PathVariable("id") int id){
         try {
-            return ResponseEntity.ok(aplicationService.getAlquiler(id));
+            AlquilerResponse alquiler = aplicationService.getAlquiler(id).map(AlquilerResponse::new)
+                    .orElseThrow(() -> new RuntimeException("No se encontro el alquiler"));
+            return ResponseEntity.ok(alquiler);
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

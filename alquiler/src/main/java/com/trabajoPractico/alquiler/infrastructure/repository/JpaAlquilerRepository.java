@@ -24,14 +24,14 @@ public class JpaAlquilerRepository implements AlquilerRepository {
 
     @Override
     public List<Alquiler> findAll() {
-        return alquilerDao.findAll().stream().map(Alquiler::new).toList();
+        return alquilerDao.findAll().stream().map(AlquilerEntity::toAlquiler).toList();
     }
 
     @Override
     public Optional<Alquiler> getById(int alquilerId) {
-        Optional<AlquilerEntity> alquilerEntity = alquilerDao.findById(alquilerId);
+        AlquilerEntity alquilerEntity = alquilerDao.findById(alquilerId).get();
 
-        Alquiler alquiler = new Alquiler(alquilerEntity.get());
+        Alquiler alquiler = alquilerEntity.toAlquiler();
 
         return Optional.of(alquiler);
     }
@@ -39,10 +39,10 @@ public class JpaAlquilerRepository implements AlquilerRepository {
     @Override
     @Transactional
     public Optional<Alquiler> save(Alquiler alquiler) {
-        AlquilerEntity alquilerEntity = alquilerDao.save(new AlquilerEntity(alquiler));
+        AlquilerEntity alquilerEntity = alquilerDao.save(alquiler.toEntity());
 
         //Transformar alquilerEntity a Alquiler para devolverlo
-        Alquiler alquiler1 = new Alquiler(alquilerEntity);
+        Alquiler alquiler1 = alquilerEntity.toAlquiler();
         return Optional.of(alquiler1);
     }
 
@@ -53,7 +53,7 @@ public class JpaAlquilerRepository implements AlquilerRepository {
 
         alquilerDao.save(alquilerEntity.from(alquilerNuevosDatos));
 
-        Alquiler alquiler1 = new Alquiler(alquilerEntity);
+        Alquiler alquiler1 = alquilerEntity.toAlquiler();
         return Optional.of(alquiler1);
     }
 
