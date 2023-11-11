@@ -1,5 +1,8 @@
 package com.trabajoPractico.alquiler.infrastructure.configuration;
 
+import com.trabajoPractico.alquiler.application.AplicationService;
+import com.trabajoPractico.alquiler.application.AplicationServiceImpl;
+import com.trabajoPractico.alquiler.domain.exchangePort.CambioMonedaService;
 import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import com.trabajoPractico.alquiler.domain.repository.TarifaRepository;
@@ -22,6 +25,11 @@ public class BeanConfiguration {
     @Bean
     public AlquilerService alquilerService(AlquilerRepository alquilerRepository, EstacionService estacionService, TarifaService tarifaService) {
         return new DomainAlquilerServiceImpl(alquilerRepository, estacionService, tarifaService);
+    }
+
+    @Bean
+    public AplicationService aplicationService(AlquilerService alquilerService, CambioMonedaService cambioMonedaService) {
+        return new AplicationServiceImpl(alquilerService, cambioMonedaService);
     }
 
 

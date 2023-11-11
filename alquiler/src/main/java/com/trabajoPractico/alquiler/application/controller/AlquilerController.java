@@ -1,10 +1,9 @@
 package com.trabajoPractico.alquiler.application.controller;
 
+import com.trabajoPractico.alquiler.application.AplicationService;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
-import com.trabajoPractico.alquiler.application.request.Alquiler.FiltrosAlquilerRequestDto;
 import com.trabajoPractico.alquiler.application.response.AlquilerResponse;
-import com.trabajoPractico.alquiler.domain.service.AlquilerService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,14 +14,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/alquileres")
 public class AlquilerController {
-    private final AlquilerService alquilerService;
+    private final AplicationService aplicationService;
 
-    public AlquilerController(AlquilerService alquilerService) { this.alquilerService = alquilerService;}
+    public AlquilerController(AplicationService aplicationService) {
+        this.aplicationService = aplicationService;
+    }
+
 
     @GetMapping
     public ResponseEntity<?> getAll(){
         try {
-            List<AlquilerResponse> alquileres = alquilerService.getAll().stream().map(AlquilerResponse::new).toList();
+            List<AlquilerResponse> alquileres = aplicationService.getAll().stream().map(AlquilerResponse::new).toList();
             return ResponseEntity.ok(alquileres);
         }
         catch (Exception e) {
@@ -36,7 +38,7 @@ public class AlquilerController {
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
-            return ResponseEntity.ok(alquilerService.createAlquiler(alquilerRequestDto));
+            return ResponseEntity.ok(aplicationService.createAlquiler(alquilerRequestDto));
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -50,7 +52,7 @@ public class AlquilerController {
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
-            return ResponseEntity.ok(alquilerService.terminarAlquiler(id,alquilerFinResquestDto));
+            return ResponseEntity.ok(aplicationService.terminarAlquiler(id,alquilerFinResquestDto));
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -60,7 +62,7 @@ public class AlquilerController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getAlquiler(@PathVariable("id") int id){
         try {
-            return ResponseEntity.ok(alquilerService.getAlquiler(id));
+            return ResponseEntity.ok(aplicationService.getAlquiler(id));
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -70,7 +72,7 @@ public class AlquilerController {
     @GetMapping("/filtrar/estado/{estado}")
     public ResponseEntity<?> filtrarAlquileres(@RequestParam int estado){
         try {
-            return ResponseEntity.ok(alquilerService.filtrarPorEstado(estado));
+            return ResponseEntity.ok(aplicationService.filtrarPorEstado(estado));
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

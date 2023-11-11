@@ -7,6 +7,7 @@ import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,7 +55,7 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
         Double distancia = estacionService.getDistanciaEntreEstaciones(alquilerAFinalizar.get().getEstacionRetiro(),alquilerDetails.getEstacionDevolucion());
         if(distancia == null) throw new RuntimeException("no se encontro una estacion");
 
-        alquilerAFinalizar.get().finalizarAlquiler(distancia,alquilerDetails.getEstacionDevolucion(),fechaHoraDevolucion,tarifa);
+        alquilerAFinalizar.get().finalizarAlquiler(distancia,alquilerDetails.getEstacionDevolucion(),fechaHoraDevolucion,tarifa.getId());
         //Cuando termine de calcular las cosas creo el alquiler con los datos nuevos
         return alquilerRepository.update(alquilerAFinalizar.get());
     }
