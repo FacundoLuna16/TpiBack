@@ -23,17 +23,23 @@ public class GWConfig {
                                         @Value("${apunte-api-gw-kempes.url-microservicio-estaciones}") String uriEstaciones) {
         return builder.routes()
                 // Ruteo al Microservicio de Alquileres
-                .route(p -> p.path("/api/v1/alquileres").uri(uriAlquileres))
+                .route(p -> p
+                        .path("/api/v1/alquileres/**")
+                        .uri(uriAlquileres))
                 // Ruteo al Microservicio de Estaciones
-                .route(p -> p.path("/api/v1/estaciones").uri(uriEstaciones))
+                .route(p -> p
+                        .path("/api/v1/estaciones/**")
+                        .uri(uriEstaciones))
                 .build();
 
     }
     @Bean
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http) throws Exception {
         http.authorizeExchange(exchanges -> exchanges
-
-
+//                        .pathMatchers("/api/v1/alquileres/**")
+//                        .hasRole("CLIENTES")
+//                        .pathMatchers("/api/v1/estaciones/**")
+//                        .hasRole("ADMINISTRADORES")
 
                         // Cualquier otra petición...
                         .anyExchange()
