@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
@@ -45,15 +46,54 @@ public class Alquiler {
         this.idTarifa = 0;
     }
 
-    public Alquiler finalizarAlquiler(Double montoTotal, int estacionDevolucion, LocalDateTime fechaHoraDevolucion, long idTarifa) {
+    public Alquiler finalizarAlquiler(Double distancia, int estacionDevolucion, LocalDateTime fechaHoraDevolucion, Tarifa tarifa) {
         this.estado = 2;
-        this.monto = montoTotal;
-        this.estacionDevolucion = estacionDevolucion;
         this.fechaHoraDevolucion = fechaHoraDevolucion;
-        this.idTarifa = idTarifa;
+        this.idTarifa = tarifa.getId();
+        this.estacionDevolucion = estacionDevolucion;
+        this.monto = this.calcularMontoTotal(distancia,tarifa);
         return this;
     }
+    public Double calcularMontoTotal(Double distancia, Tarifa tarifa){
+        Double montoFijoAlquiler = tarifa.getMontoFijoAlquiler();
+        Double montoAdicionalPorTiempo = this.calcularMontoAdiccionalPorTiempo(tarifa);
+        Double montoAdicionalPorDistancia = this.calcularMontoAdiccionalPorDistancia(distancia, tarifa);
 
+        return montoFijoAlquiler + montoAdicionalPorTiempo + montoAdicionalPorDistancia;
+
+    }
+
+    private Double calcularMontoAdiccionalPorDistancia(Double distancia, Tarifa tarifa) {
+        return distancia * tarifa.getMontoKm();
+    }
+
+    public Double calcularMontoAdiccionalPorTiempo(Tarifa tarifa){
+
+        long minutosAlquilados = Duration.between(this.fechaHoraRetiro,this.fechaHoraDevolucion).toMinutes();
+
+        double montoMinutosFraccionados = 0.0;
+        Double montoAdicionalPorTiempo = 0.0;
+
+        if (minutosAlquilados < 31){
+            montoMinutosFraccionados = minutosAlquilados * tarifa.getMontoMinutoFraccion();
+            montoAdicionalPorTiempo = montoMinutosFraccionados;
+        } else {
+
+
+            int horasAlquiladas = (minutosAlquilados / 60)<1 ? 1: (int) (minutosAlquilados / 60);
+
+            long minutosRestantes = minutosAlquilados % 60;
+            if (minutosRestantes >= 31) {
+                horasAlquiladas++;
+            } else {
+                montoMinutosFraccionados = minutosRestantes * tarifa.getMontoMinutoFraccion();
+            }
+
+            montoAdicionalPorTiempo = horasAlquiladas * tarifa.getMontoHora() + montoMinutosFraccionados;
+        }
+
+        return montoAdicionalPorTiempo;
+    }
 
 
 }
