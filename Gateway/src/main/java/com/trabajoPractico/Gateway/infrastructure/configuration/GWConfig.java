@@ -20,8 +20,8 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class GWConfig {
     @Bean
     public RouteLocator configurarRutas(RouteLocatorBuilder builder,
-                                        @Value("${apunte-api-gw-kempes.url-microservicio-alquileres}") String uriAlquileres,
-                                        @Value("${apunte-api-gw-kempes.url-microservicio-estaciones}") String uriEstaciones) {
+                                        @Value("${apunte-api-gw-tpi.url-microservicio-alquileres}") String uriAlquileres,
+                                        @Value("${apunte-api-gw-tpi.url-microservicio-estaciones}") String uriEstaciones) {
         return builder.routes()
                 // Ruteo al Microservicio de Alquileres
                 .route(p -> p
@@ -68,7 +68,7 @@ public class GWConfig {
 
         // Se especifica el nombre del claim a analizar
         grantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
-        // Se agrega este prefijo en la conversión por una convención de Spring (ROLE_) 
+        // Se agrega este prefijo en la conversión por una convención de Spring (ROLE_)
         grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
 
         // Se asocia el conversor de Authorities al Bean que convierte el token JWT a un objeto Authorization

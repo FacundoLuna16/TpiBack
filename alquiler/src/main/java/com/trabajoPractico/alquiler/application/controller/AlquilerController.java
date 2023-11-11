@@ -24,8 +24,7 @@ public class AlquilerController {
     @GetMapping
     public ResponseEntity<?> getAll(){
         try {
-            List<AlquilerResponse> alquileres = aplicationService.getAll().stream().map(AlquilerResponse::new).toList();
-            return ResponseEntity.ok(alquileres);
+            return ResponseEntity.ok(aplicationService.getAll());
         }
         catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -35,6 +34,7 @@ public class AlquilerController {
     @PostMapping
     public ResponseEntity<?> createAlquiler(@Valid @RequestBody AlquilerRequestDto alquilerRequestDto, BindingResult result){
         if (result.hasErrors()) {
+            //Valida que los campos sean los que corresponden
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
@@ -49,6 +49,7 @@ public class AlquilerController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateAlquiler(@PathVariable("id") int id, @Valid @RequestBody AlquilerFinResquestDto alquilerFinResquestDto, BindingResult result){
         if (result.hasErrors()) {
+            //Valida que los campos sean los que corresponden
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
@@ -62,9 +63,7 @@ public class AlquilerController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getAlquiler(@PathVariable("id") int id){
         try {
-            AlquilerResponse alquiler = aplicationService.getAlquiler(id).map(AlquilerResponse::new)
-                    .orElseThrow(() -> new RuntimeException("No se encontro el alquiler"));
-            return ResponseEntity.ok(alquiler);
+            return ResponseEntity.ok(aplicationService.getAlquiler(id));
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -27,10 +27,10 @@ public class AlquilerResponse {
         this.idCliente = alquiler.getIdCliente();
         this.estado = alquiler.getEstado();
         this.idEstacionRetiro = alquiler.getEstacionRetiro();
-        this.idEstacionDevolucion = alquiler.getEstacionDevolucion();
+        this.idEstacionDevolucion = alquiler.getEstacionDevolucion()==0 ? null : alquiler.getEstacionDevolucion();
         this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();
         this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
-        this.monto = alquiler.getMonto();
+        this.monto = alquiler.getMonto() == 0 ? null : alquiler.getMonto();
         this.idTarifa = alquiler.getTarifa() != null ? alquiler.getTarifa().getId() : null;
     }
 }

@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AplicationService {
-    List<Alquiler> getAll();
+    List<AlquilerResponse> getAll();
 
-    Optional<Alquiler> getAlquiler(int alquilerId);
+    AlquilerResponse getAlquiler(int alquilerId);
 
     Optional<AlquilerFinalizadoResponse> terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails);
 
-    Optional<Alquiler> createAlquiler(AlquilerRequestDto alquilerRequestDto);
+    Optional<AlquilerResponse> createAlquiler(AlquilerRequestDto alquilerRequestDto);
 
-    List<Alquiler> filtrarPorEstado(int estado);
+    List<AlquilerResponse> filtrarPorEstado(int estado);
 }

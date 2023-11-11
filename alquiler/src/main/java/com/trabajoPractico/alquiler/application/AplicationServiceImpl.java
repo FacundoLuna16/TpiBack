@@ -24,14 +24,15 @@ public class AplicationServiceImpl implements AplicationService{
 
 
     @Override
-    public List<Alquiler> getAll() {
-        return alquilerService.getAll();
+    public List<AlquilerResponse> getAll() {
+        return alquilerService.getAll().stream().map(AlquilerResponse::new).toList();
     }
 
     @Override
-    public Optional<Alquiler> getAlquiler(int alquilerId) {
-        Optional<Alquiler> alquiler = alquilerService.getAlquiler(alquilerId);
-        return alquiler;
+    public AlquilerResponse getAlquiler(int alquilerId) {
+        return alquilerService.getAlquiler(alquilerId).map(AlquilerResponse::new)
+                .orElseThrow(() -> new RuntimeException("No se encontro el alquiler"));
+
     }
 
     @Override
@@ -61,12 +62,12 @@ public class AplicationServiceImpl implements AplicationService{
     }
 
     @Override
-    public Optional<Alquiler> createAlquiler(AlquilerRequestDto alquilerRequestDto) {
-        return alquilerService.createAlquiler(alquilerRequestDto);
+    public Optional<AlquilerResponse> createAlquiler(AlquilerRequestDto alquilerRequestDto) {
+        return alquilerService.createAlquiler(alquilerRequestDto).map(AlquilerResponse::new);
     }
 
     @Override
-    public List<Alquiler> filtrarPorEstado(int estado) {
-        return alquilerService.filtrarPorEstado(estado);
+    public List<AlquilerResponse> filtrarPorEstado(int estado) {
+        return alquilerService.filtrarPorEstado(estado).stream().map(AlquilerResponse::new).toList();
     }
 }
