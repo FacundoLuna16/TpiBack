@@ -36,10 +36,10 @@ public class GWConfig {
     @Bean
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http) throws Exception {
         http.authorizeExchange(exchanges -> exchanges
-//                        .pathMatchers("/api/v1/alquileres/**")
-//                        .hasRole("ROLE_CLIENTE")
-//                        .pathMatchers("/api/v1/estaciones/**")
-//                        .hasRole("ROLE_ADMINISTRADOR")
+                        .pathMatchers("/api/v1/alquileres/**")
+                        .hasRole("CLIENTE")
+                        .pathMatchers("/api/v1/estaciones/**")
+                        .hasRole("ADMINISTRADOR")
 
                         // Cualquier otra petición...
                         .anyExchange()
@@ -57,15 +57,12 @@ public class GWConfig {
 
         // Se especifica el nombre del claim a analizar
         grantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
-        // Se agrega este prefijo en la conversión por una convención de Spring
+        // Se agrega este prefijo en la conversión por una convención de Spring (ROLE_) pero pruebo sin colocarlo
         grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
 
         // Se asocia el conversor de Authorities al Bean que convierte el token JWT a un objeto Authorization
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(
                 new ReactiveJwtGrantedAuthoritiesConverterAdapter(grantedAuthoritiesConverter));
-        // También se puede cambiar el claim que corresponde al nombre que luego se utilizará en el objeto
-        // Authorization
-        // jwtAuthenticationConverter.setPrincipalClaimName("user_name");
 
         return jwtAuthenticationConverter;
     }
