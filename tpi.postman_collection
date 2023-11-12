@@ -10,39 +10,8 @@
 			"name": "Gateway",
 			"item": [
 				{
-					"name": "alquileres",
+					"name": "Administrador",
 					"item": [
-						{
-							"name": "PostAlquiler",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"idCliente\": \"idCliente\",\r\n  \"idEstacionRetiro\": 2\r\n}"
-								},
-								"url": {
-									"raw": "http://localhost:8080/api/v1/alquileres",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"v1",
-										"alquileres"
-									]
-								}
-							},
-							"response": []
-						},
 						{
 							"name": "getAllAlquileres",
 							"request": {
@@ -72,7 +41,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MjA5MDEsImlhdCI6MTY5OTcyMDYwMSwianRpIjoiOWZhYWQ3MTUtNTdhOS00NjQ5LTk5MWMtY2NjNjJiYjFkNWFjIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiJhMjhmOWE0NC04MzllLTQxMWEtODZhMy05NDllNTk3ZmQwYzgiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiJhMjhmOWE0NC04MzllLTQxMWEtODZhMy05NDllNTk3ZmQwYzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.Q9m-pcz7jljaKTNp_sfEMPEjTEJsVzEKZoI823X-0mMo4xdKJbwPnybJidTVkazi9q9z6b3Shh4pWxiA2VlL3mCyv25qsb-GD2JefNaZLOQEGY4bOsFUZ731jBLEcQkH5MB-y6_jgm9aKNBk4eRoRskabdNoo1Xh9l3LYlCPKxUD1k6rBGr7yUOYXYikFKW_8f_9kOwaY94omfsgpXh027w8hHSsLRi7PAfvxPXgLcYQT_mJR21l8NofhqsjzLIG3EblLfMJ98pGAOMpKlX4ghny9TYBoMQbJyjwHL9LwtkoDuRVtrHJCB5enXz_tf6T40t6-nNQEdpLaSn7O5NpcA",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzU1NTEsImlhdCI6MTY5OTczNTI1MSwianRpIjoiOTRkYTI1NmYtNTEzZS00OWE5LThjN2ItMmE0NmNmOTExNmFlIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiJlYjdhMmVmMi1iODJmLTQ3OTItYTBkNy03NmQ4Y2E0MDk2MWMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiJlYjdhMmVmMi1iODJmLTQ3OTItYTBkNy03NmQ4Y2E0MDk2MWMiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.Att7L9-6OS0opIu3HDHi4eV19Fhj_LRVxAaVHzkZHlZpNLsb_ohcxjBTgfzSr3Ua4WVaG4sn87KK3l7LbklLf3oBuPKxv2gsTdYkux2ncyOeKqODEQhDuVDli5eYggCU74i0b91QoQGbXoVke6lxF5x5GuxRVtt8VP_58F_hCHUqrVMR5V7A0mbePXtIfNSGKO0BaUvGKIHbSLyrOYorfpgFHYPtYJYZfpX5CdLwpiMiSy4gOVMdGBIcfhzp5N_aTKATbxrtvOs7ci1wc00zTUIw3N1r1qph7EF_tg2pWEMaA8ALM9PeQO-TzCohnCg7Dxsjujcd2sXlSHqDO5jxnQ",
 											"type": "string"
 										}
 									]
@@ -80,7 +49,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/alquileres/21",
+									"raw": "http://localhost:8080/api/v1/alquileres/20",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -90,7 +59,133 @@
 										"api",
 										"v1",
 										"alquileres",
-										"21"
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "postEstaciones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzY3NzEsImlhdCI6MTY5OTczNjQ3MSwianRpIjoiNzU3NWE1YzktNmY5Yi00MjQ1LTlkOGEtYWQ3YzZiY2RhNmQxIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.MC1H4qMBTELy-7ERhivryh-Tqn93FiSnzKJ3weGtm06oX-vfByVDc0bgmIby14pwtG8ARDhqD62u0-4t1kSyMv2oE9E7ePolZUFwIrMeG5gN5CIUlJTwvtQ5-P9ChlzyEF30NXC1ZmO9GV_4FI-RLpdbBSDLsyjylpL-Uww0_EDkaBcSEYejXxq_ChYnLBaiy06_VP0R_4ZRk16HrBqjZPm3b69ugbr6szhouZd-iL2FuV3FnPLbqoiDuuUAXgB6fijA6ZF5hAksWKBHSMMnv4hZhFeubkVbiCOee8cVl-Prj_2e93wNQcJrC2v1SHSVQEEZnAJvwQNVzkW2dwKv0A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\":\"Estacion32\",\r\n    \"latitud\": -53.52135151,\r\n    \"longitud\": -52.515151\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/estaciones",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"estaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AlquilerPorEstado",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cliente",
+					"item": [
+						{
+							"name": "getAllEstaciones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzY3NzEsImlhdCI6MTY5OTczNjQ3MSwianRpIjoiNzU3NWE1YzktNmY5Yi00MjQ1LTlkOGEtYWQ3YzZiY2RhNmQxIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.MC1H4qMBTELy-7ERhivryh-Tqn93FiSnzKJ3weGtm06oX-vfByVDc0bgmIby14pwtG8ARDhqD62u0-4t1kSyMv2oE9E7ePolZUFwIrMeG5gN5CIUlJTwvtQ5-P9ChlzyEF30NXC1ZmO9GV_4FI-RLpdbBSDLsyjylpL-Uww0_EDkaBcSEYejXxq_ChYnLBaiy06_VP0R_4ZRk16HrBqjZPm3b69ugbr6szhouZd-iL2FuV3FnPLbqoiDuuUAXgB6fijA6ZF5hAksWKBHSMMnv4hZhFeubkVbiCOee8cVl-Prj_2e93wNQcJrC2v1SHSVQEEZnAJvwQNVzkW2dwKv0A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/estaciones",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"estaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PostAlquiler",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzU5NjMsImlhdCI6MTY5OTczNTY2MywianRpIjoiMWIyZDdmNDAtNGNkMS00MGU3LWIzMzctZWNmODRiZTAwNjYzIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiIzOGUwMDIxOS0xNThkLTRlOWQtOTQ4MC1mN2ViYzRkNGExMjciLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiIzOGUwMDIxOS0xNThkLTRlOWQtOTQ4MC1mN2ViYzRkNGExMjciLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.T_9jixPlTBAyGasw6ULr7mQlRiypNGsWBX8FFlzaYgdCeotfj-LUAm_b_fpMwbkKfarKbHYwew76Ekt0UByCg-PDmsyv1vKPfosCfv9qZS56QTUSYQ2qWmSXOtzRcMjKOq6U94drQfDI_yTi-QRb27-yU-xWsg7ZOSQ51hQEvwm0CQ6nVC8eILTsJpDWIKZHdOF5Wles6UMMHi5ybw0fQuEI-uw0VcNG5RMQTWlg2dtDxdf1VWWT6FJZKZAZspFkHK5-Cm-QGGrWDRipDEVJdkG8wsfGbqna8FyMWb0yPvSpuu_cMuDuDABPrND8ilhYS6IdCSLFAKOSYz4pS3h-zw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idCliente\": \"idClientePrueba\",\r\n  \"idEstacionRetiro\": 2\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/alquileres",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"alquileres"
 									]
 								}
 							},
@@ -99,6 +194,16 @@
 						{
 							"name": "New Request",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -112,7 +217,7 @@
 									"raw": "{\r\n  \"estacionDevolucion\": 1,\r\n  \"monedaElegida\": \"USD\"\r\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/alquileres/30",
+									"raw": "http://localhost:8080/api/v1/alquileres/31",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -122,118 +227,119 @@
 										"api",
 										"v1",
 										"alquileres",
-										"30"
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByIdEstaciones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzY3NzEsImlhdCI6MTY5OTczNjQ3MSwianRpIjoiNzU3NWE1YzktNmY5Yi00MjQ1LTlkOGEtYWQ3YzZiY2RhNmQxIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.MC1H4qMBTELy-7ERhivryh-Tqn93FiSnzKJ3weGtm06oX-vfByVDc0bgmIby14pwtG8ARDhqD62u0-4t1kSyMv2oE9E7ePolZUFwIrMeG5gN5CIUlJTwvtQ5-P9ChlzyEF30NXC1ZmO9GV_4FI-RLpdbBSDLsyjylpL-Uww0_EDkaBcSEYejXxq_ChYnLBaiy06_VP0R_4ZRk16HrBqjZPm3b69ugbr6szhouZd-iL2FuV3FnPLbqoiDuuUAXgB6fijA6ZF5hAksWKBHSMMnv4hZhFeubkVbiCOee8cVl-Prj_2e93wNQcJrC2v1SHSVQEEZnAJvwQNVzkW2dwKv0A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/estaciones/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"estaciones",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cercaniaEstacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk3MzY3NzEsImlhdCI6MTY5OTczNjQ3MSwianRpIjoiNzU3NWE1YzktNmY5Yi00MjQ1LTlkOGEtYWQ3YzZiY2RhNmQxIiwiaXNzIjoiaHR0cHM6Ly9sYWJzeXMuZnJjLnV0bi5lZHUuYXIvYWltL3JlYWxtcy9iYWNrZW5kLXRwcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIyYTk2OGYyNC1hM2M4LTQ0ZDctYjMxOS04NWYzNTRkNjVlNDMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnRlLXRwaSIsInNlc3Npb25fc3RhdGUiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYmFja2VuZC10cHMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiQ0xJRU5URSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoidHBpLXNjb3BlIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5ODFkYjJmNi00NjVlLTRjZDYtOWU4Ni04ZGY4YTYxNzM1OWYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkZhY3VuZG8gTmljb2xhcyBKb3NlIEx1bmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiI4OTQyMkBzaXN0ZW1hcy5mcmMudXRuLmVkdS5hciIsImdpdmVuX25hbWUiOiJGYWN1bmRvIE5pY29sYXMgSm9zZSIsImZhbWlseV9uYW1lIjoiTHVuYSIsImVtYWlsIjoiODk0MjJAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.MC1H4qMBTELy-7ERhivryh-Tqn93FiSnzKJ3weGtm06oX-vfByVDc0bgmIby14pwtG8ARDhqD62u0-4t1kSyMv2oE9E7ePolZUFwIrMeG5gN5CIUlJTwvtQ5-P9ChlzyEF30NXC1ZmO9GV_4FI-RLpdbBSDLsyjylpL-Uww0_EDkaBcSEYejXxq_ChYnLBaiy06_VP0R_4ZRk16HrBqjZPm3b69ugbr6szhouZd-iL2FuV3FnPLbqoiDuuUAXgB6fijA6ZF5hAksWKBHSMMnv4hZhFeubkVbiCOee8cVl-Prj_2e93wNQcJrC2v1SHSVQEEZnAJvwQNVzkW2dwKv0A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/estaciones/cercania?latitud=-31.432961123175&longitud=64.1840911211195",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"estaciones",
+										"cercania"
+									],
+									"query": [
+										{
+											"key": "latitud",
+											"value": "-31.432961123175"
+										},
+										{
+											"key": "longitud",
+											"value": "64.1840911211195"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "distanciaEntreEstaciones",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/api/v1/estaciones/distanciaEntreEstaciones?idEstacion1=1&idEstacion2=7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"estaciones",
+										"distanciaEntreEstaciones"
+									],
+									"query": [
+										{
+											"key": "idEstacion1",
+											"value": "1"
+										},
+										{
+											"key": "idEstacion2",
+											"value": "7"
+										}
 									]
 								}
 							},
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "getAllEstaciones",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/v1/estaciones",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"estaciones"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getByIdEstaciones",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/v1/estaciones/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"estaciones",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "cercaniaEstacion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080api/v1/estaciones/cercania?latitud=-31.432961123175&longitud=-64.1840911211195",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080api",
-							"path": [
-								"v1",
-								"estaciones",
-								"cercania"
-							],
-							"query": [
-								{
-									"key": "latitud",
-									"value": "-31.432961123175"
-								},
-								{
-									"key": "longitud",
-									"value": "-64.1840911211195"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Estacion2\",\r\n    \"latitud\": -53.52135151,\r\n    \"longitud\": -52.515151\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/v1/estaciones",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"estaciones"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -253,7 +359,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"moneda_destino\":\"CLP\",\r\n    \"importe\":4026.8\r\n}"
+							"raw": "{\r\n    \"moneda_destino\":\"EUR\",\r\n    \"importe\":1341.6\r\n}"
 						},
 						"url": {
 							"raw": "http://34.82.105.125:8080/convertir",

@@ -23,7 +23,6 @@ public class Estacion {
 
     public Estacion(CreadoEstacionRequest estacionRequest){
         this.nombre = new NombreEstacion(estacionRequest.getNombre());
-        // TODO - Ver si se puede hacer que se guarde la fecha y hora de creacion
         this.fechaHoraDeCreacion = LocalDateTime.now();
         this.coordenada = new Coordenada(estacionRequest.getLatitud(), estacionRequest.getLongitud());
     }

@@ -14,7 +14,7 @@ public class AlquilerFinResquestDto {
     @Min(value = 1, message = "La estacion de devolucion no es valida")
     private int estacionDevolucion;
 
-    @NotBlank(message = "debe elegir una moneda valida o null para pesos")
+    @NotBlank(message = "debe elegir una moneda valida")
     @Pattern(
             regexp = "^(EUR|CLP|BRL|COP|PEN|GBP|USD|ARS)$",
             message = "Debe elegir una Moneda valida")

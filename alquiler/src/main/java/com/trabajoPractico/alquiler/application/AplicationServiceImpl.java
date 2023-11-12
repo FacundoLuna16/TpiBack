@@ -38,7 +38,7 @@ public class AplicationServiceImpl implements AplicationService{
     @Override
     @Transactional
     public Optional<AlquilerFinalizadoResponse> terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
-        //TODO comprobar si el parametro de moneda elegida es null, que lo sea por defecto ARS
+            //obtenemos el alquiler
          AlquilerFinalizadoResponse alquilerResponse = alquilerService.terminarAlquiler(alquilerId, alquilerDetails)
                  .stream()
                  .map(alquiler -> new AlquilerFinalizadoResponse(alquiler, alquilerDetails.getMonedaElegida()))
@@ -47,7 +47,7 @@ public class AplicationServiceImpl implements AplicationService{
 
          //hacemos la conversion de moneda
         //Si la moneda elegida es ARS, no hacemos la conversion
-        if (alquilerDetails.getMonedaElegida().equals("ARS")) return Optional.of(alquilerResponse);
+        if (alquilerDetails.getMonedaElegida().equals("ARS") || alquilerDetails.getMonedaElegida() == null) return Optional.of(alquilerResponse);
 
          Double importe = cambioMonedaService.obtenerConversion(alquilerResponse.getMonto(), alquilerDetails.getMonedaElegida());
          if (importe == null) {
@@ -55,6 +55,7 @@ public class AplicationServiceImpl implements AplicationService{
          }
          //seteamos el nuevo importe
          alquilerResponse.setMonto(importe);
+
 
          //devolvemos el alquiler
          return Optional.of(alquilerResponse);

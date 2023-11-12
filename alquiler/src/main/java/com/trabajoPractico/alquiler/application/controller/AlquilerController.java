@@ -70,13 +70,17 @@ public class AlquilerController {
         }
     }
 
-    @GetMapping("/filtrar/estado/{estado}")
-    public ResponseEntity<?> filtrarAlquileres(@RequestParam int estado){
+    @GetMapping("/filtrar/estado/{id}")
+    public ResponseEntity<?> filtrarAlquileres(@PathVariable("id") int id){
         try {
-            return ResponseEntity.ok(aplicationService.filtrarPorEstado(estado));
+            return ResponseEntity.ok(aplicationService.filtrarPorEstado(id));
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    //TODO agregar endpoint para filtrar por id de cliente
+
+    //TODO agregar un enpoint con multiples filtros
 }

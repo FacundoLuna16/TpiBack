@@ -38,7 +38,6 @@ public class AlquilerEntity {
             pkColumnName = "name",
             valueColumnName = "seq",
             pkColumnValue = "ALQUILERES",//propia
-            initialValue = 1,
             allocationSize = 1
     )
     private int id;
