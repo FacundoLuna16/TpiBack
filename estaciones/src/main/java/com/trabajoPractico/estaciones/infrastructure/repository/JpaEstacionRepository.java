@@ -41,8 +41,8 @@ public class JpaEstacionRepository implements EstacionRepository {
 
     @Override
     public Optional<Estacion> save(Estacion estacion) {
-
-        EstacionEntity estacionEntity = estacionDao.save(EstacionEntity.from(estacion));
+        EstacionEntity estacionEntity = new EstacionEntity(estacion);
+        estacionDao.save(estacionEntity);
         return Optional.of(estacionEntity.toEstacion());
     }
 

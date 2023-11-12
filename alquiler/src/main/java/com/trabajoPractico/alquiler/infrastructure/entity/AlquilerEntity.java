@@ -55,27 +55,16 @@ public class AlquilerEntity {
     private Integer estacionDevolucion;
 
     @Column(name = "FECHA_HORA_RETIRO")
-    private LocalDateTime fechaHoraRetiro;
+    private String fechaHoraRetiro;
 
     @Column(name = "FECHA_HORA_DEVOLUCION")
-    private LocalDateTime fechaHoraDevolucion;
+    private String fechaHoraDevolucion;
 
     private Double monto;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_TARIFA", referencedColumnName = "ID")
     private TarifaEntity tarifa;
-
-//    public AlquilerEntity (Alquiler alquiler){
-//        this.idCliente = alquiler.getIdCliente();
-//        this.estado = alquiler.getEstado();
-//        this.estacionRetiro = alquiler.getEstacionRetiro();
-//        this.estacionDevolucion = alquiler.getEstacionDevolucion()==0?null:alquiler.getEstacionDevolucion();
-//        this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();
-//        this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
-//        this.monto = alquiler.getMonto()==0.0?null:alquiler.getMonto();
-//        this.idTarifa = alquiler.getIdTarifa()==0?null:alquiler.getIdTarifa();
-//    }
 
 
     public AlquilerEntity() {
@@ -87,24 +76,25 @@ public class AlquilerEntity {
         this.estado = alquiler.getEstado();
         this.estacionRetiro = alquiler.getEstacionRetiro();
         this.estacionDevolucion = alquiler.getEstacionDevolucion()==0?null:alquiler.getEstacionDevolucion();
-        this.fechaHoraRetiro = alquiler.getFechaHoraRetiro();
-        this.fechaHoraDevolucion = alquiler.getFechaHoraDevolucion();
+        this.fechaHoraRetiro = MetodosComunes.formatLocalDateTime(alquiler.getFechaHoraRetiro());
+        this.fechaHoraDevolucion = MetodosComunes.formatLocalDateTime(alquiler.getFechaHoraDevolucion());
         this.monto = alquiler.getMonto()==0.0?null:alquiler.getMonto();
         this.tarifa = alquiler.getTarifa().toEntity();
         return this;
     }
 
     public Alquiler toAlquiler() {
-        return new Alquiler(
-                this.id,
-                this.idCliente,
-                this.estado,
-                this.estacionRetiro,
-                this.estacionDevolucion == null ? 0 : this.estacionDevolucion,
-                this.fechaHoraRetiro,
-                this.fechaHoraDevolucion,
-                this.monto,
-                this.tarifa != null ? this.tarifa.toTarifa() : null
-        );
+        Alquiler alquiler =  new Alquiler();
+        alquiler.setId(this.id);
+        alquiler.setIdCliente(this.idCliente);
+        alquiler.setEstado(this.estado);
+        alquiler.setEstacionRetiro(this.estacionRetiro);
+        alquiler.setEstacionDevolucion(this.estacionDevolucion == null ? 0 : this.estacionDevolucion);
+        alquiler.setFechaHoraRetiro(MetodosComunes.parseLocalDateTime(this.fechaHoraRetiro));
+        alquiler.setFechaHoraDevolucion(MetodosComunes.parseLocalDateTime(this.fechaHoraDevolucion));
+        alquiler.setMonto(this.monto == null ? 0.0 : this.monto);
+        alquiler.setTarifa(this.tarifa != null ? this.tarifa.toTarifa() : null);
+
+        return alquiler;
     }
 }

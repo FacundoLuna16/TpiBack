@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,10 +54,11 @@ public class EstacionController {
                     .map(estacion -> new EstacionReponseUnique(
                             estacion.getId(),
                             estacion.getNombre().getValue(),
+                            estacion.getFechaHoraDeCreacion(),
                             estacion.getCoordenada().getLatitud(),
                             estacion.getCoordenada().getLongitud()
                     ))
-                    .orElse(new EstacionReponseUnique(0, "dsd", 0, 0));
+                    .orElse(new EstacionReponseUnique(0, "no existe", LocalDateTime.now() , 0,0));
 
             //Validar si la estacion existe
             if (estacionBuscada.getId() == 0) {

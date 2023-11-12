@@ -6,12 +6,12 @@ import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class Estacion {
 
     private int id;
@@ -23,10 +23,16 @@ public class Estacion {
 
     public Estacion(CreadoEstacionRequest estacionRequest){
         this.nombre = new NombreEstacion(estacionRequest.getNombre());
+        // TODO - Ver si se puede hacer que se guarde la fecha y hora de creacion
         this.fechaHoraDeCreacion = LocalDateTime.now();
         this.coordenada = new Coordenada(estacionRequest.getLatitud(), estacionRequest.getLongitud());
     }
 
 
-
+    public Estacion(int id, NombreEstacion nombreEstacion, LocalDateTime localDateTime, Coordenada coordenada) {
+        this.id = id;
+        this.nombre = nombreEstacion;
+        this.fechaHoraDeCreacion = localDateTime;
+        this.coordenada = coordenada;
+    }
 }

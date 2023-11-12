@@ -1,9 +1,11 @@
 package com.trabajoPractico.alquiler.domain.model;
 
 import com.trabajoPractico.alquiler.infrastructure.entity.AlquilerEntity;
+import com.trabajoPractico.alquiler.infrastructure.entity.MetodosComunes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -23,28 +25,17 @@ public class Alquiler {
     private Double monto;
     private Tarifa tarifa;
 
-//    public Alquiler(AlquilerEntity entity){
-//        this.id = entity.getId();
-//        this.idCliente = entity.getIdCliente();
-//        this.estado = entity.getEstado();
-//        this.estacionRetiro = entity.getEstacionRetiro();
-//        this.estacionDevolucion = entity.getEstacionDevolucion()==null?0:entity.getEstacionDevolucion();
-//        this.fechaHoraRetiro = entity.getFechaHoraRetiro();
-//        this.fechaHoraDevolucion = entity.getFechaHoraDevolucion();
-//        this.monto = entity.getMonto();
-//        this.idTarifa = entity.getIdTarifa()==null?0:entity.getIdTarifa();
-//    }
-
     public Alquiler(String idCliente, int estacionRetiro) {
         this.idCliente = idCliente;
         this.estacionRetiro = estacionRetiro;
         this.estado = 1;
         this.fechaHoraRetiro = LocalDateTime.now();
-        this.estacionDevolucion = 0;
         this.fechaHoraDevolucion = null;
+        this.estacionDevolucion = 0;
         this.monto = 0.0;
         this.tarifa = null;
     }
+
 
     public AlquilerEntity toEntity() {
         AlquilerEntity entity = new AlquilerEntity();
@@ -53,8 +44,8 @@ public class Alquiler {
         entity.setEstado(this.estado);
         entity.setEstacionRetiro(this.estacionRetiro);
         entity.setEstacionDevolucion(this.estacionDevolucion == 0 ? null : this.estacionDevolucion);
-        entity.setFechaHoraRetiro(this.fechaHoraRetiro);
-        entity.setFechaHoraDevolucion(this.fechaHoraDevolucion);
+        entity.setFechaHoraRetiro(MetodosComunes.formatLocalDateTime(this.fechaHoraRetiro));
+        entity.setFechaHoraDevolucion(MetodosComunes.formatLocalDateTime(this.fechaHoraDevolucion));
         entity.setMonto(this.monto);
         entity.setTarifa(this.tarifa != null ? this.tarifa.toEntity() : null);
         return entity;

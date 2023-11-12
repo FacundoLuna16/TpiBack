@@ -34,19 +34,18 @@ public class DomainEstacionService implements EstacionService{
     @Override
     public Optional<EstacionResponseCercania> getByCercania(double latitud, double longitud) {
 
-        //Traemos todas las estaciones
         List<Estacion> estaciones = estacionRepository.getAll();
         Estacion estacionCercana = null;
         double distancia = 0;
-        double distanciaMinima = 0;
-        Coordenada cord = new Coordenada(latitud,longitud);
+        double distanciaMinima = Double.MAX_VALUE; // Inicializa con un valor grande
+        Coordenada cord = new Coordenada(latitud, longitud);
 
-        //Por cada estacion calculamos la distancia
-        for (Estacion estacion: estaciones){
-            //Calculamos la distancia euclidea
+// Por cada estacion calculamos la distancia
+        for (Estacion estacion : estaciones) {
+            // Calculamos la distancia euclidiana
             distancia = estacion.getCoordenada().calcularDistacia(cord);
-            //Si es la primera estacion o la distancia es menor a la minima, la guardamos
-            if (distanciaMinima == 0 || distancia < distanciaMinima){
+            // Si es la primera estacion o la distancia es menor a la minima, la guardamos
+            if (distancia < distanciaMinima) {
                 distanciaMinima = distancia;
                 estacionCercana = estacion;
             }

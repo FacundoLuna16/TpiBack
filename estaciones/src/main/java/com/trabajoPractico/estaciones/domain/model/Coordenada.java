@@ -21,11 +21,11 @@ public final class Coordenada { //Nadie puede heredar la clase
 
     public double calcularDistacia(Coordenada coordenada){
         //Calculamos la diferencia entre las latitudes y longitudes
-        double diferenciaLatitud = Math.abs(latitud - coordenada.getLatitud()) * 110000;
-        double diferenciaLongitud = Math.abs(longitud - coordenada.getLongitud()) * 110000;
+        double diferenciaLatitud = Math.abs(latitud - coordenada.getLatitud());
+        double diferenciaLongitud = Math.abs(longitud - coordenada.getLongitud());
 
         //Calculamos la distancia euclidea
-        Double distancia = Math.sqrt(Math.pow(diferenciaLatitud,2) + Math.pow(diferenciaLongitud,2));
+        Double distancia = Math.sqrt(Math.pow(diferenciaLatitud,2) + Math.pow(diferenciaLongitud,2))* 110000;
 
         //Retornamos la distancia
         return distancia;
