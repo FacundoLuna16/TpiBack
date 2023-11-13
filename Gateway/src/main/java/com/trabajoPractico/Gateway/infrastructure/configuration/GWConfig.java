@@ -40,7 +40,7 @@ public class GWConfig {
                 //Cliente Puede realizar consultas sobre las estaciones, realizar alquileres y devoluciones.
                 .pathMatchers(HttpMethod.POST,"/api/v1/alquileres")
                 .hasRole("CLIENTE")
-                .pathMatchers(HttpMethod.PUT,"/api/v1/alquileres")
+                .pathMatchers(HttpMethod.PUT,"/api/v1/alquileres/**")
                 .hasRole("CLIENTE")
                 .pathMatchers(HttpMethod.GET,"/api/v1/estaciones/**")
                 .hasRole("CLIENTE")
