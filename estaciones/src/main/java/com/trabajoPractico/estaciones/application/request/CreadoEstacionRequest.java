@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
 public class CreadoEstacionRequest {
 
     @NotNull(message = "El nombre no puede ser nulo")

@@ -28,6 +28,9 @@ public class DomainEstacionService implements EstacionService{
 
     @Override
     public Optional<Estacion> findById(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El id no puede ser negativo");
+        }
         return estacionRepository.findById(id);
     }
 
@@ -35,6 +38,7 @@ public class DomainEstacionService implements EstacionService{
     public Optional<EstacionResponseCercania> getByCercania(double latitud, double longitud) {
 
         List<Estacion> estaciones = estacionRepository.getAll();
+        if (estaciones.isEmpty()) return Optional.empty();
         Estacion estacionCercana = null;
         double distancia = 0;
         double distanciaMinima = Double.MAX_VALUE; // Inicializa con un valor grande
@@ -64,6 +68,8 @@ public class DomainEstacionService implements EstacionService{
 
     @Override
     public Optional<Estacion> save(CreadoEstacionRequest estacionRequest) {
+        if (estacionRequest == null) throw new IllegalArgumentException("La estacion no puede ser null");
+
 
         //Creamos la estacion de nuestro modelo
         Estacion estacion = new Estacion(estacionRequest);
@@ -75,11 +81,13 @@ public class DomainEstacionService implements EstacionService{
 
     @Override
     public void deleteById(int id) {
+        if (id < 0) throw new IllegalArgumentException("El id no puede ser negativo");
         estacionRepository.deleteById(id);
     }
 
     @Override
     public Optional<Double> getDistanciaEntreEstaciones(int idEstacion1, int idEstacion2) {
+        if (idEstacion1 < 0 || idEstacion2 < 0) throw new IllegalArgumentException("El id no puede ser negativo");
         //Busca las estaciones por id
         Estacion estacion1 = estacionRepository.findById(idEstacion1).get();
         Estacion estacion2 = estacionRepository.findById(idEstacion2).get();

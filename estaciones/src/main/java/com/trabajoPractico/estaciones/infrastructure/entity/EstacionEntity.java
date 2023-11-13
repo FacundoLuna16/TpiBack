@@ -4,14 +4,9 @@ import com.trabajoPractico.estaciones.domain.model.Coordenada;
 import com.trabajoPractico.estaciones.domain.model.Estacion;
 import com.trabajoPractico.estaciones.domain.model.NombreEstacion;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "ESTACIONES")
