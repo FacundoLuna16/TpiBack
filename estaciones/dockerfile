@@ -1,0 +1,11 @@
+FROM openjdk:17-jdk-alpine
+
+# Establece el directorio de trabajo en /tmp
+VOLUME ..BD/bicicletas.db
+
+# Copia el JAR al contenedor
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+
+# Punto de entrada para la aplicación Spring Boot
+ENTRYPOINT ["java", "-jar", "/app.jar"]
