@@ -221,7 +221,6 @@ void test_getByCercania_successful() {
         // Verifica que el método getAll del repositorio se haya llamado
         Mockito.verify(estacionRepository).getAll();
     }
-    
 
 
 
