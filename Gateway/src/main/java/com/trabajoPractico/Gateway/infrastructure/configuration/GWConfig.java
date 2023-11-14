@@ -55,9 +55,9 @@ public class GWConfig {
                 .pathMatchers(HttpMethod.GET,"/api/v1/alquileres/**")
                 .hasRole("ADMINISTRADOR")
 
-                        // Cualquier otra petición...
-//                        .anyExchange()
-//                        .permitAll()
+                // Cualquier otra petición...
+                .anyExchange()
+                .authenticated()
 
                 ).oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .csrf(csrf -> csrf.disable());
