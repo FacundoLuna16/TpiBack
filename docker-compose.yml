@@ -10,7 +10,9 @@ services:
     expose:
       - "8082"
     volumes:
-      - db-volume:/app/BD
+      - ./BD:/app/BD
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
 
   alquiler:
     container_name: alquiler
@@ -22,7 +24,9 @@ services:
     depends_on:
       - estaciones
     volumes:
-      - db-volume:/app/BD
+      - ./BD:/app/BD
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
 
   gateway:
     container_name: gateway
@@ -34,6 +38,8 @@ services:
     depends_on:
         - alquiler
         - estaciones
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
 
 volumes:
   db-volume:

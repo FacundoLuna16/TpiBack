@@ -13,11 +13,14 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtGrantedAuthoritiesConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Configuration
 @EnableWebFluxSecurity
 public class GWConfig {
+    private static final Logger logger = LoggerFactory.getLogger(GWConfig.class);
+
     @Bean
     public RouteLocator configurarRutas(RouteLocatorBuilder builder,
                                         @Value("${apunte-api-gw-tpi.url-microservicio-alquileres}") String uriAlquileres,

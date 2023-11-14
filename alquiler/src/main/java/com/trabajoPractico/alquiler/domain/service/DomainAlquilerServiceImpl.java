@@ -36,6 +36,8 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
     @Override
     public Optional<Alquiler> getAlquiler(int alquilerId) {
+        if (alquilerId <= 0) throw new RuntimeException("El id del alquiler no puede ser menor o igual a 0");
+
         Optional<Alquiler> alquiler = alquilerRepository.getById(alquilerId);
 
         return alquiler;
@@ -44,7 +46,7 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
 
     @Override
     public Optional<Alquiler> terminarAlquiler(int alquilerId, AlquilerFinResquestDto alquilerDetails) {
-
+        if (alquilerId <= 0) throw new RuntimeException("El id del alquiler no puede ser menor o igual a 0");
         Optional<Alquiler> alquilerAFinalizar = this.buscarAlquiler(alquilerId);
 
         //Buscamos la tarifa que corresponde a la fechaHoraDevolucion
@@ -62,6 +64,9 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
     }
 
     private Optional<Alquiler> buscarAlquiler(int alquilerId) {
+        //TODO implementar con getAlquiler? justifica el uso de un metodo aparte?
+
+        if (alquilerId <= 0) throw new RuntimeException("El id del alquiler no puede ser menor o igual a 0");
         //Buscar que exista el alquiler solicitado a finalizar
         Optional<Alquiler> alquilerAFinalizar  = alquilerRepository.getById(alquilerId);
 
