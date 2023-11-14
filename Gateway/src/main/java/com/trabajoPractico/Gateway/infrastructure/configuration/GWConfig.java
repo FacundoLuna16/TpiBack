@@ -50,14 +50,18 @@ public class GWConfig {
                 //Administrador
                                 // Puede agregar nuevas estaciones
                                 //Puede obtener listados sobre los alquileres realizados
-                .pathMatchers(HttpMethod.POST,"/api/v1/estaciones")
+//                .pathMatchers(HttpMethod.POST,"/api/v1/estaciones")
+//                .hasRole("ADMINISTRADOR")
+//                .pathMatchers(HttpMethod.GET,"/api/v1/alquileres/**")
+//                .hasRole("ADMINISTRADOR")
+                .pathMatchers("/api/v1/estaciones/**")
                 .hasRole("ADMINISTRADOR")
-                .pathMatchers(HttpMethod.GET,"/api/v1/alquileres/**")
+                .pathMatchers("/api/v1/alquileres/**")
                 .hasRole("ADMINISTRADOR")
 
                 // Cualquier otra petición...
-                .anyExchange()
-                .authenticated()
+//                .anyExchange()
+//                .authenticated()
 
                 ).oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .csrf(csrf -> csrf.disable());
