@@ -115,7 +115,13 @@ public class EstacionController {
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
-            Estacion estacion =estacionService.save(estacionRequest).get();
+            EstacionReponseUnique estacion =estacionService.save(estacionRequest).map(estacion1 -> new EstacionReponseUnique(
+                    estacion1.getId(),
+                    estacion1.getNombre().getValue(),
+                    estacion1.getFechaHoraDeCreacion(),
+                    estacion1.getCoordenada().getLatitud(),
+                    estacion1.getCoordenada().getLongitud()
+            )).orElse(new EstacionReponseUnique(0, "no existe", LocalDateTime.now() , 0,0));
             return new ResponseEntity<>(estacion, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Error interno", HttpStatus.INTERNAL_SERVER_ERROR);
