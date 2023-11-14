@@ -64,11 +64,9 @@ public class DomainAlquilerServiceImpl implements AlquilerService{
     }
 
     private Optional<Alquiler> buscarAlquiler(int alquilerId) {
-        //TODO implementar con getAlquiler? justifica el uso de un metodo aparte?
 
-        if (alquilerId <= 0) throw new RuntimeException("El id del alquiler no puede ser menor o igual a 0");
         //Buscar que exista el alquiler solicitado a finalizar
-        Optional<Alquiler> alquilerAFinalizar  = alquilerRepository.getById(alquilerId);
+        Optional<Alquiler> alquilerAFinalizar  = this.getAlquiler(alquilerId);
 
         if (alquilerAFinalizar.isEmpty() || alquilerAFinalizar.get().getEstado() == 2){
             throw new RuntimeException("El alquiler no existe o ya finalizo");
