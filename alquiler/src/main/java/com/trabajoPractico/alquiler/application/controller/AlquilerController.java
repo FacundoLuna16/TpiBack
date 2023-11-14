@@ -3,8 +3,8 @@ package com.trabajoPractico.alquiler.application.controller;
 import com.trabajoPractico.alquiler.application.AplicationService;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerFinResquestDto;
 import com.trabajoPractico.alquiler.application.request.Alquiler.AlquilerRequestDto;
-import com.trabajoPractico.alquiler.application.response.AlquilerResponse;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +38,7 @@ public class AlquilerController {
             return ResponseEntity.badRequest().body(result.getFieldError().getDefaultMessage());
         }
         try {
-            return ResponseEntity.ok(aplicationService.createAlquiler(alquilerRequestDto));
+            return ResponseEntity.status(HttpStatus.CREATED).body(aplicationService.createAlquiler(alquilerRequestDto));
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
