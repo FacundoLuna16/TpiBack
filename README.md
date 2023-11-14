@@ -3,6 +3,8 @@ Antes de todo, debemos asegurarnos de tener el .jar actualizado
 podemos hacer esto con el comando 
 
 mvn clean install
+
+
 mvn package
 
 esto debemos hacerlo en la carpeta raiz, y nos actualizara el jar de Estaciones y Alquileres
