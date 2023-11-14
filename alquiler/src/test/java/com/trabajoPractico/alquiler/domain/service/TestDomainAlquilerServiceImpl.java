@@ -5,6 +5,7 @@ import com.trabajoPractico.alquiler.domain.exchangePort.EstacionService;
 import com.trabajoPractico.alquiler.domain.model.Alquiler;
 import com.trabajoPractico.alquiler.domain.model.Tarifa;
 import com.trabajoPractico.alquiler.domain.repository.AlquilerRepository;
+import org.hibernate.mapping.Any;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -158,26 +160,25 @@ public class TestDomainAlquilerServiceImpl {
 
     ///////////////////////////TEST TERMINAR ALQUILER//////////////////////////////////////
 
-//    @DisplayName("Test para terminar un alquiler")
-//    @Test
-//    void test_terminarAlquiler() {
-//        //when
-//        Mockito.when(alquilerRepository.getById(1)).thenReturn(Optional.of(alquiler1));
-//        Mockito.when(tarifaService.buscarTarifa(Mockito.any())).thenReturn(tarifa1);
-//        Mockito.when(estacionService.getDistanciaEntreEstaciones(Mockito.any(),Mockito.any())).thenReturn(0.64);
-//        AlquilerFinResquestDto alquilerFinResquestDto = new AlquilerFinResquestDto(1,"USD");
-//        //Llamamos al metodo a probar
-//        Optional<Alquiler> alquilerObtenido = domainAlquilerService.terminarAlquiler(1,alquilerFinResquestDto);
-//
-//        //verificamos que la lista no sea vacia
-//        Assertions.assertFalse(alquilerObtenido.isEmpty());
-//        Assertions.assertEquals(alquilerObtenido.get().getId(), alquiler1.getId());
-//
-//        //verificamos que el metodo se haya llamado una vez
-//        Mockito.verify(alquilerRepository, Mockito.times(1)).getById(1);
-//        Mockito.verify(tarifaService, Mockito.times(1)).buscarTarifa(Mockito.any());
-//        Mockito.verify(estacionService, Mockito.times(1)).getDistanciaEntreEstaciones(Mockito.any(),Mockito.any());
-//
-//    }
+    @DisplayName("Test para terminar un alquiler")
+    @Test
+    void test_terminarAlquiler() {
+        //when
+        alquiler1.setId(1);
+        Mockito.when(alquilerRepository.getById(1)).thenReturn(Optional.of(alquiler1));
+        //Sin importar el parametro, devuelve la tarifa1
+        Mockito.when(tarifaService.buscarTarifa(Mockito.any())).thenReturn(tarifa1);
+        Mockito.when(estacionService.getDistanciaEntreEstaciones(1,1)).thenReturn(1.0);
+        Mockito.when(alquilerRepository.update(Mockito.any())).thenReturn(Optional.of(alquiler1));
+        AlquilerFinResquestDto alquilerFinResquestDto = new AlquilerFinResquestDto(1,"USD");
+        //Llamamos al metodo a probar
+        Optional<Alquiler> alquilerObtenido = domainAlquilerService.terminarAlquiler(1,alquilerFinResquestDto);
+
+        //verificamos que la lista no sea vacia
+        Assertions.assertTrue(alquilerObtenido.isPresent());
+        Assertions.assertEquals(alquilerObtenido.get().getId(), alquiler1.getId());
+
+
+    }
 
 }
