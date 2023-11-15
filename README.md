@@ -132,3 +132,41 @@ Una vez que se actualizó el jar, debemos volver a ejecutar el comando de **dock
 
 **Otra forma es desde el IDE**
 
+
+## Para probar los endpoints
+
+En este proyecto se utilizó Swagger para documentar los endpoints, por lo que podemos probar los microservicios Alquiler y Estaciones de forma individual.
+Por medio de Swagger podemos probar los endpoints de cada microservicio, pero para probar el Gateway, debemos utilizar Postman
+
+### Probar los endpoints de Alquileres y Estaciones
+
+- Una vez que se ejecutó el proyecto, podemos ir a nuestro navegador y colocar la siguiente url (Para Estaciones)
+
+````agsl
+http://localhost:8082/swagger-ui.html
+````
+- para proba los endpoints de Alquileres
+
+````agsl
+http://localhost:8081/swagger-ui.html
+````
+Una vez que se abrió la pagina de Swagger, podemos probar los endpoints de cada microservicio
+
+
+### Probar los endpoints del Gateway
+
+Para probar los endpoints del Gateway, debemos utilizar Postman, en este repositorio se encuentra una coleccion de postman con los endpoints del Gateway
+- Accedemos a Postman y importamos la collection que se encuentra en el repositorio como **tpi.postman_collection**
+
+Una vez que se importó la collection, podemos probar los endpoints de la siguiente manera
+
+- 1) Primero debemos ir al endpoint **tokenCliente** o **tokenAdmin** para obtener el token de autenticacion
+
+![Probar endpoints](image/AccesoPostman.png)
+
+En este endpoint (ya configurada las variables de la peticion a keycloak), tenemos configurado un script que nos guarda el token en una variable global, 
+por lo que no es necesario copiarlo y pegarlo en los otros endpoints
+
+- 2) Una vez que tenemos el token, podemos probar los endpoints de los otros microservicios
+
+![Probar endpoints](image/respuestaGet.png)
