@@ -1,7 +1,7 @@
-# Compiled class files
+# Compiled class file
 *.class
 
-# Log files
+# Log file
 *.log
 
 # BlueJ files
@@ -10,7 +10,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package files
+# Package Files #
 *.jar
 *.war
 *.nar
@@ -19,17 +19,13 @@
 *.tar.gz
 *.rar
 
-# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
 
-# Maven target directory
+HELP.md
 target/
-
-# Maven Wrapper JAR
 !.mvn/wrapper/maven-wrapper.jar
-
-# Exclude build directories in source trees
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -43,7 +39,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -61,11 +57,14 @@ build/
 ### VS Code ###
 .vscode/
 
-### Other ###
+### Otros ###
 bicicletas.db
 TPI-Backend.pdf
 
-### Microservices Target Directories ###
+### Carpeta Targer de los microservicios ###
+
 alquiler/target/
 estaciones/target/
 Gateway/target/
+
+
