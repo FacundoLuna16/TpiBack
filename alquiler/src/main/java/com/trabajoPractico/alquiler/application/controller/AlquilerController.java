@@ -80,7 +80,4 @@ public class AlquilerController {
         }
     }
 
-    //TODO agregar endpoint para filtrar por id de cliente
-
-    //TODO agregar un enpoint con multiples filtros
 }

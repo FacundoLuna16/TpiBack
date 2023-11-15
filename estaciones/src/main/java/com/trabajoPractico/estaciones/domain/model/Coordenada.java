@@ -19,7 +19,7 @@ public final class Coordenada { //Nadie puede heredar la clase
         this.longitud = longitud;
     }
 
-    public double calcularDistacia(Coordenada coordenada){
+    public double calcularDistancia(Coordenada coordenada){
         //Calculamos la diferencia entre las latitudes y longitudes
         double diferenciaLatitud = Math.abs(latitud - coordenada.getLatitud());
         double diferenciaLongitud = Math.abs(longitud - coordenada.getLongitud());

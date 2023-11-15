@@ -24,7 +24,7 @@ public class DomainTarifaServiceImpl implements TarifaService{
     public Tarifa buscarTarifa(LocalDateTime fechaHoraDevolucion){
         LocalDate fecha = fechaHoraDevolucion.toLocalDate();
 
-        //TODO refactorizar
+
         List<Tarifa> tarifas = tarifaRepository.getAll();
         List<Tarifa> tarifasPromocion = tarifas.stream().filter(tarifa -> tarifa.getTipoTarifa() == 2).toList();
 
